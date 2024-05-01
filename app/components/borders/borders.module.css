@@ -1,0 +1,18 @@
+.borders {
+  display: flex;
+  text-align: center;
+  padding: 10px 0 5px;
+  border-width: 1px 0;
+  border-style: solid none;
+  border-color: white;
+  width: 45vw;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 7px;
+  width: 90vw;
+}
