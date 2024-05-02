@@ -71,7 +71,7 @@ export default function Home(): ReactElement {
     {
       title: "Discord Bot",
       description: [
-        "Engineered an interactive bot for Discord, enhancing user engagement and community interaction.",
+        "Engineered an interactive Python-based bot for Discord, enhancing user engagement and community interaction.",
         "Implemented a feature for automated birthday announcements, fostering a sense of community and personal connection among members.",
         "Devised a welcoming system that sends personalized greetings to new members, promoting a friendly and inclusive environment.",
         "Integrated a music playing feature in chat, enriching the user experience and fostering a lively community atmosphere."
@@ -81,7 +81,7 @@ export default function Home(): ReactElement {
     {
       title: "Tutoring Tracking Tool",
       description: [
-        "Designed and implemented a comprehensive tutoring tracking tool aimed at streamlining the management of tutoring services.",
+        "Designed and implemented a Java-based comprehensive tutoring tracking tool aimed at streamlining the management of tutoring services.",
         "Developed a feature for logging and tracking hours, enhancing the efficiency of time management for both tutors and students.",
         "Implemented a sorting mechanism that categorizes tutors and students by their respective majors and courses, facilitating seamless matching of tutors with students.",
         "The tool significantly improved the organization of tutoring services, leading to increased productivity and better resource allocation."
