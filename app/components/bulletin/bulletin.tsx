@@ -1,5 +1,5 @@
 import styles from "./bulletin.module.css";
-import { bulletinProps } from "./bulletin.interface";
+import { bulletPoints, bulletinProps } from "./bulletin.interface";
 import { ReactElement } from "react";
 import Image, { StaticImageData } from "next/image";
 
@@ -14,7 +14,10 @@ export default function Bulletin(data:bulletinProps): ReactElement {
       typeof data.description === 'string' ?
         getDescription(data.description) 
         :
-        getBulletedDescription(data.description)
+        data.description !== undefined ? 
+          getBulletedDescription(data.description)
+          :
+          data.bullets !== undefined && getBulletedColumns(data.bullets)
       }
       { 
         getGraphics(data.graphics)
@@ -40,6 +43,29 @@ function getBulletedDescription(description: string[]): ReactElement {
       ))
     } 
     </div>);
+}
+
+function getBulletedColumns(bullets: bulletPoints[]): ReactElement | boolean {
+  return (
+    <div className={styles.bulletTitles}>
+    {
+      bullets.map((bullet, index) => (
+        <div key={index}>
+          <b className={styles.titles}>
+          {bullet.main}
+          </b>
+          <div className={styles.bullets}>
+          {
+            bullets[index].keyPoints.map((skills, sIndex) => (
+              <li className={styles.bulletSkills} key={sIndex}>{skills}</li>
+            ))
+          }
+          </div>
+        </div>
+      ))
+    }
+    </div>
+  );
 }
 
 function getGraphics(graphics:StaticImageData[] | undefined): ReactElement | undefined {

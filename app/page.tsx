@@ -2,17 +2,12 @@ import { ReactElement } from "react";
 import Bulletin from "./components/bulletin/bulletin";
 import styles from "./page.module.css";
 import Borders from "./components/borders/borders";
+import { bulletinProps } from "./components/bulletin/bulletin.interface";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import  { faFileDownload }  from '@fortawesome/free-solid-svg-icons';
-import { Button } from "@nextui-org/button";
-import Image from "next/image";
-import icon from "../app/favicon.ico";
+import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 import raycasterDemo1 from "../app/resources/raycaster_demo1.gif";
 import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
 import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
-import { bulletinProps } from "./components/bulletin/bulletin.interface";
-import resume from "./resources/raycaster_demo1.gif";
-
 
 export default function Home(): ReactElement {
   
@@ -25,14 +20,32 @@ export default function Home(): ReactElement {
 
   const skills: bulletinProps = {
     title: "Key Skills",
-    description: [
-      "TypeScript: Proficient in TypeScript, a statically typed superset of JavaScript.",
-      "Java: Strong knowledge of Java programming language.",
-      "Spring Boot: Practiced with Spring Boot for building robust back-end applications.",
-      "Angular (13-16): Proficiency with Angular versions 13 through 16 for front-end development.",
-      "Python: Proficient in Python.",
-      "C and C++: Experienced in both C and C++."
-    ]
+    bullets: [
+       {
+        main: "Proficiencies",
+        keyPoints: [
+          "TypeScript","Java", "Spring Boot", "Angular (13-16)",
+          "Python.",
+          "CI/CD",
+          "Fullstack development",
+          "Front-end developement",
+          "Back-end development",
+          "Developing RESTful APIs",
+          "Agile methodologies"
+        ]
+      },
+      {
+        main: "Experienced",
+        keyPoints: [
+          "PostgreSQL",
+          "C and C++.",
+          "Node.js",
+          "TFS",
+          "Linux (Ubuntu, Kali)",
+          "GitHub"
+        ]
+      }
+    ],
   };
 
   const experience: bulletinProps = {
@@ -125,7 +138,7 @@ export default function Home(): ReactElement {
           Download Resume
         </a>
         <Bulletin title={statement.title} description={statement.description}></Bulletin>
-        <Bulletin title={skills.title} description={skills.description}></Bulletin>
+        <Bulletin title={skills.title} bullets={skills.bullets}></Bulletin>
         <Borders>Experience</Borders>
         <Bulletin title={experience.title} description={experience.description} dates={experience.dates}></Bulletin>
         <Borders>Projects</Borders>
