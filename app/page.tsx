@@ -8,6 +8,7 @@ import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 import raycasterDemo1 from "../app/resources/raycaster_demo1.gif";
 import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
 import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
+import StarBackground from "./components/starry-background/starry-background";
 
 export default function Home(): ReactElement {
   
@@ -129,11 +130,11 @@ export default function Home(): ReactElement {
   };
   return (
     <main className={styles.main}>
+      <StarBackground/>
         { getHeader() }
         { getLine() }
       <div className={styles.resume}>
         <a className={styles.downloadButton} href={"Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}>
-          
           <FontAwesomeIcon icon={faFileDownload} width={50} height={50}></FontAwesomeIcon>
           Download Resume
         </a>
