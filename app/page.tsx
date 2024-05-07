@@ -8,7 +8,7 @@ import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 import raycasterDemo1 from "../app/resources/raycaster_demo1.gif";
 import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
 import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
-import StarBackground from "./components/starry-background/starry-background";
+import StarBackground from "./components/star-background/star-background";
 
 export default function Home(): ReactElement {
   
