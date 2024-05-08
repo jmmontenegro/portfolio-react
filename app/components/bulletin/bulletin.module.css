@@ -7,6 +7,7 @@
     border-radius: 8px;
     min-width: 500px;
     width: 90vw;
+    z-index: 1;
 }
 
 .title {
@@ -39,6 +40,26 @@
 .graphic {
     margin: 15px auto auto;
     border-radius: 8px;
+}
+
+.bulletTitles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 10px;
+
+    .titles {
+        font-size: large;
+        text-decoration: underline;
+    }
+    
+    .bullets {
+        padding: 10px;
+    }
+}
+
+.bulletSkills {
+    margin-left: 5px;
 }
 
 @media (max-width: 1000px) {

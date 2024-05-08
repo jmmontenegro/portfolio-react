@@ -2,12 +2,13 @@ import { ReactElement } from "react";
 import Bulletin from "./components/bulletin/bulletin";
 import styles from "./page.module.css";
 import Borders from "./components/borders/borders";
+import { bulletinProps } from "./components/bulletin/bulletin.interface";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import  { faFileDownload }  from '@fortawesome/free-solid-svg-icons';
 import raycasterDemo1 from "../app/resources/raycaster_demo1.gif";
 import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
 import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
-import { bulletinProps } from "./components/bulletin/bulletin.interface";
+import StarBackground from "./components/star-background/star-background";
 import GetSettingsButton from "./components/dialog/dialog";
 
 export default function Home(): ReactElement {
@@ -21,14 +22,32 @@ export default function Home(): ReactElement {
 
   const skills: bulletinProps = {
     title: "Key Skills",
-    description: [
-      "TypeScript: Proficient in TypeScript, a statically typed superset of JavaScript.",
-      "Java: Strong knowledge of Java programming language.",
-      "Spring Boot: Practiced with Spring Boot for building robust back-end applications.",
-      "Angular (13-16): Proficiency with Angular versions 13 through 16 for front-end development.",
-      "Python: Proficient in Python.",
-      "C and C++: Experienced in both C and C++."
-    ]
+    bullets: [
+       {
+        main: "Proficiencies",
+        keyPoints: [
+          "TypeScript","Java", "Spring Boot", "Angular (13-16)",
+          "Python.",
+          "CI/CD",
+          "Fullstack development",
+          "Front-end developement",
+          "Back-end development",
+          "Developing RESTful APIs",
+          "Agile methodologies"
+        ]
+      },
+      {
+        main: "Experienced",
+        keyPoints: [
+          "PostgreSQL",
+          "C and C++.",
+          "Node.js",
+          "TFS",
+          "Linux (Ubuntu, Kali)",
+          "GitHub"
+        ]
+      }
+    ],
   };
 
   const experience: bulletinProps = {
@@ -67,7 +86,7 @@ export default function Home(): ReactElement {
     {
       title: "Discord Bot",
       description: [
-        "Engineered an interactive bot for Discord, enhancing user engagement and community interaction.",
+        "Engineered an interactive Python-based bot for Discord, enhancing user engagement and community interaction.",
         "Implemented a feature for automated birthday announcements, fostering a sense of community and personal connection among members.",
         "Devised a welcoming system that sends personalized greetings to new members, promoting a friendly and inclusive environment.",
         "Integrated a music playing feature in chat, enriching the user experience and fostering a lively community atmosphere."
@@ -77,7 +96,7 @@ export default function Home(): ReactElement {
     {
       title: "Tutoring Tracking Tool",
       description: [
-        "Designed and implemented a comprehensive tutoring tracking tool aimed at streamlining the management of tutoring services.",
+        "Designed and implemented a Java-based comprehensive tutoring tracking tool aimed at streamlining the management of tutoring services.",
         "Developed a feature for logging and tracking hours, enhancing the efficiency of time management for both tutors and students.",
         "Implemented a sorting mechanism that categorizes tutors and students by their respective majors and courses, facilitating seamless matching of tutors with students.",
         "The tool significantly improved the organization of tutoring services, leading to increased productivity and better resource allocation."
@@ -112,12 +131,13 @@ export default function Home(): ReactElement {
   };
   return (
     <main className={styles.main}>
+      <StarBackground/>
       { getHeader() }
       { getLine() }
       <div className={styles.resume}>
-      { getDownloadButton() }
+        { getDownloadButton() }
         <Bulletin title={statement.title} description={statement.description}></Bulletin>
-        <Bulletin title={skills.title} description={skills.description}></Bulletin>
+        <Bulletin title={skills.title} bullets={skills.bullets}></Bulletin>
         <Borders>Experience</Borders>
         <Bulletin title={experience.title} description={experience.description} dates={experience.dates}></Bulletin>
         <Borders>Projects</Borders>
