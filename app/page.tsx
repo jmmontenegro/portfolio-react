@@ -4,15 +4,11 @@ import styles from "./page.module.css";
 import Borders from "./components/borders/borders";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import  { faFileDownload }  from '@fortawesome/free-solid-svg-icons';
-import { Button } from "@nextui-org/button";
-import Image from "next/image";
-import icon from "../app/favicon.ico";
 import raycasterDemo1 from "../app/resources/raycaster_demo1.gif";
 import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
 import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
 import { bulletinProps } from "./components/bulletin/bulletin.interface";
-import resume from "./resources/raycaster_demo1.gif";
-
+import GetSettingsButton from "./components/dialog/dialog";
 
 export default function Home(): ReactElement {
   
@@ -116,14 +112,10 @@ export default function Home(): ReactElement {
   };
   return (
     <main className={styles.main}>
-        { getHeader() }
-        { getLine() }
+      { getHeader() }
+      { getLine() }
       <div className={styles.resume}>
-        <a className={styles.downloadButton} href={"Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}>
-          
-          <FontAwesomeIcon icon={faFileDownload} width={50} height={50}></FontAwesomeIcon>
-          Download Resume
-        </a>
+      { getDownloadButton() }
         <Bulletin title={statement.title} description={statement.description}></Bulletin>
         <Bulletin title={skills.title} description={skills.description}></Bulletin>
         <Borders>Experience</Borders>
@@ -136,6 +128,9 @@ export default function Home(): ReactElement {
         <Bulletin title={education.title} description={education.description} dates={education.dates}></Bulletin>
       </div>
       { getLine() }
+      <div className={styles.settingsButton}>
+        <GetSettingsButton/>
+      </div>
     </main>
   );
 }
@@ -150,15 +145,18 @@ function getHeader(): ReactElement {
   );
 }
 
-function getLine(): ReactElement {
+function getDownloadButton(): ReactElement {
   return (
-    <div className={styles.line}></div>
+    <a className={styles.downloadButton} href={"Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}>
+      <FontAwesomeIcon icon={faFileDownload} size={"2x"} width={40} height={40}></FontAwesomeIcon>
+      <p>Download Resume</p>
+    </a>
   );
 }
 
-function downloadPdf() {
+function getLine(): ReactElement {
   return (
-    <a href={"website/app/resources/Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}></a>
+    <div className={styles.line}></div>
   );
 }
 

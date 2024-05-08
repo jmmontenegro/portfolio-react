@@ -1,0 +1,16 @@
+.settingsButton {
+    background-color: rgb(80,80,80);
+    padding: 5px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+}
+  
+.settingsCog {
+  transition: transform 2s;
+}
+
+.settingsCog:hover {
+  cursor: pointer;
+  transform: rotate(360deg);
+}
