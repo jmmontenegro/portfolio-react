@@ -4,12 +4,14 @@ import styles from "./page.module.css";
 import Borders from "./components/borders/borders";
 import { bulletinProps } from "./components/bulletin/bulletin.interface";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import  { faFileDownload }  from '@fortawesome/free-solid-svg-icons';
+import  { faCog, faFileDownload }  from '@fortawesome/free-solid-svg-icons';
 import raycasterDemo1 from "../app/resources/raycaster_demo1.gif";
 import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
 import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
 import StarBackground from "./components/star-background/star-background";
-import GetSettingsButton from "./components/dialog/dialog";
+import GetDialog from "./components/dialog/dialog";
+import { getDropDownMenu } from "./components/dropdown/dropdown";
+import dropDownData from "./components/dropdown/dropdown.data";
 
 export default function Home(): ReactElement {
   
@@ -149,7 +151,7 @@ export default function Home(): ReactElement {
       </div>
       { getLine() }
       <div className={styles.settingsButton}>
-        <GetSettingsButton/>
+        <GetDialog title={"Settings"} content={getSettings()} buttonIcon={faCog} iconSize="3x"/>
       </div>
     </main>
   );
@@ -185,5 +187,18 @@ function getProjects(projects: bulletinProps[]): ReactElement[] {
     projects.map((project, index) => (
       <Bulletin key={index} title={project.title} description={project.description} graphics={project.graphics} dates={project.dates}></Bulletin>
     ))
+  );
+}
+
+function getSettings(): ReactElement {
+  const languageSettings: dropDownData = {
+    title: "Please select a language:",
+    items: ["English","Spanish"]
+  }
+  return (
+  <div>
+    { getDropDownMenu(languageSettings) }
+  </div>
+
   );
 }
