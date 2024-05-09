@@ -135,7 +135,7 @@ export default function Home(): ReactElement {
   };
   return (
     <main className={styles.main}>
-        <GetBackground/>
+      <GetBackground/>
       <GetHeader/>
       <GetLine/>
       <div className={styles.resume}>
