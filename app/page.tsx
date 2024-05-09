@@ -110,14 +110,14 @@ function GetHeader(): ReactElement {
 
   const data = GetLanguage();
   return (
-    <div className={styles.header}>
+    <div>
       {
         data.map((json, index) => (
-          <div key={index}>
+          <div key={index} className={styles.header}>
             <h1 className={styles.title}>Jacob Montenegro</h1>
             <h2>{json.mainHeader.softwareDev}</h2>
-          <a href="mailto:jacob.m.montenegro@gmail.com" className={styles.email}>jacob.m.montenegro@gmail.com</a>
-        </div>
+            <a href="mailto:jacob.m.montenegro@gmail.com" className={styles.email}>jacob.m.montenegro@gmail.com</a>
+          </div>
         ))
       }
     </div>
