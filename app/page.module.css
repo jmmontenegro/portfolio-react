@@ -112,3 +112,9 @@
     margin: auto;
   }
 }
+
+@media (max-width: 400) {
+  .resume {
+    height: 60vh;
+  }
+}
