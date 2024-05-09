@@ -13,7 +13,7 @@ import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
 import StarBackground from "./components/star-background/star-background";
 import GetDialog from "./components/dialog/dialog";
 import React from "react";
-import { SettingsContext, GetSettings, SettingsProvider } from "./components/settings/settings";
+import { SettingsContext, GetSettings } from "./components/settings/settings";
 import { GetLanguage } from "./components/settings/language";
 
 export default function Home(): ReactElement {
