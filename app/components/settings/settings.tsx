@@ -3,6 +3,7 @@
 import { ReactElement, ReactNode, createContext, useContext, useState } from "react";
 import { GetDropDownMenu } from "../dropdown/dropdown";
 import { GetLanguage } from "./language";
+import styles from "./settings.module.css";
 
 export const SettingsContext = createContext({ isEnabled: false, toggleDisplay: () => {}, selectedOption: '', setSelectedOption: (value: string) => {} });
 
@@ -46,8 +47,8 @@ export function GetSettings(): ReactElement {
   };
   
   return (
-  <div>
-    <button onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
+  <div className={styles.settings}>
+    <button className={styles.toggleButton} onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
     <GetDropDownMenu onChange={handleDropdownChange} title={title} items={items}/>
   </div>
   );

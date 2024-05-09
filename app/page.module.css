@@ -9,6 +9,7 @@
   font-family: var(--font-mono);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
+  padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
   min-height: -webkit-fill-available;
 }
@@ -49,7 +50,7 @@
   align-items: center;
   grid-gap: 20px;
   overflow: auto;
-  height: 80vh;
+  height: 75vh;
   z-index: 1;
 }
 
@@ -96,6 +97,7 @@
 
   .resume {
     padding-right: 15px;
+    grid-gap: 60px;
   }
 
   .email {
@@ -104,5 +106,9 @@
 
   .email:hover {
     background-color: unset;
+  }
+
+  .settingsButton {
+    margin: auto;
   }
 }

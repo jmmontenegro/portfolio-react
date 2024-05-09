@@ -33,7 +33,7 @@
                                 "Desarrollo Fullstack",
                                 "Desarrollo Front-end",
                                 "Desarrollo Back-end",
-                                "Developing RESTful APIs",
+                                "Desarrollo de API RESTful",
                                 "Agile"
                             ]
                         },
@@ -57,7 +57,7 @@
                     "description" : [
                         "Llevé a cabo una investigación en profundidad y desarrolló soluciones para un equipo de generación de imágenes sintéticas.",
                         "Produje datos realistas para mejorar los modelos de visión artificial de IA.",
-                        "Investigué, diseñv e implementé soluciones de diagnóstico para defectos de vehículos.",
+                        "Investigué, diseñé e implementé soluciones de diagnóstico para defectos de vehículos.",
                         "Aproveché un backend de Spring Boot para crear API RESTful.",
                         "Desarrollé un frontend dinámico de Angular (TypeScript) para la interacción del usuario.",
                         "Utilicé bases de datos PostgreSQL para el almacenamiento y recuperación de datos."

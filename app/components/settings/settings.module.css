@@ -1,0 +1,9 @@
+.settings {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+}
+
+.toggleButton {
+    width: 100%;
+}
