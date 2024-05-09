@@ -37,7 +37,7 @@ export default function StarBackground() {
 
     useEffect(() => {
         if (!workerRef.current) {
-            workerRef.current = new Worker(new URL('star-worker.worker.js', import.meta.url));
+            workerRef.current = new Worker(new URL('star-worker.worker.tsx', import.meta.url));
 
             workerRef.current.onmessage = function(event) {
                 setStars(event.data);

@@ -1,4 +1,6 @@
-import { ReactElement } from "react";
+"use client";
+
+import { ReactElement, useContext } from "react";
 import Bulletin from "./components/bulletin/bulletin";
 import styles from "./page.module.css";
 import Borders from "./components/borders/borders";
@@ -10,8 +12,8 @@ import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
 import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
 import StarBackground from "./components/star-background/star-background";
 import GetDialog from "./components/dialog/dialog";
-import { getDropDownMenu } from "./components/dropdown/dropdown";
-import dropDownData from "./components/dropdown/dropdown.data";
+import React from "react";
+import { BackgroundContext, GetSettings, SettingsProvider } from "./components/settings/settings";
 
 export default function Home(): ReactElement {
   
@@ -133,11 +135,13 @@ export default function Home(): ReactElement {
   };
   return (
     <main className={styles.main}>
-      <StarBackground/>
-      { getHeader() }
-      { getLine() }
+      <SettingsProvider>
+        <GetBackground/>
+      </SettingsProvider>
+      <GetHeader/>
+      <GetLine/>
       <div className={styles.resume}>
-        { getDownloadButton() }
+        <GetDownloadButton/>
         <Bulletin title={statement.title} description={statement.description}></Bulletin>
         <Bulletin title={skills.title} bullets={skills.bullets}></Bulletin>
         <Borders>Experience</Borders>
@@ -149,15 +153,21 @@ export default function Home(): ReactElement {
         <Borders>Education</Borders>
         <Bulletin title={education.title} description={education.description} dates={education.dates}></Bulletin>
       </div>
-      { getLine() }
-      <div className={styles.settingsButton}>
-        <GetDialog title={"Settings"} content={getSettings()} buttonIcon={faCog} iconSize="3x"/>
+      <GetLine/>
+
+      <div className={styles.settingsButton} hidden={true}>
+        <GetDialog title={"Settings"} content={<GetSettings/>} buttonIcon={faCog} iconSize="3x"/>
       </div>
     </main>
   );
 }
 
-function getHeader(): ReactElement {
+function GetBackground(): ReactElement | null {
+  const { isEnabled } = useContext(BackgroundContext);
+  return isEnabled ? <StarBackground /> : null;
+}
+
+function GetHeader(): ReactElement {
   return (
     <div className={styles.header}>
       <h1 className={styles.title}>Jacob Montenegro</h1>
@@ -167,7 +177,7 @@ function getHeader(): ReactElement {
   );
 }
 
-function getDownloadButton(): ReactElement {
+function GetDownloadButton(): ReactElement {
   return (
     <a className={styles.downloadButton} href={"Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}>
       <FontAwesomeIcon icon={faFileDownload} size={"2x"} width={40} height={40}></FontAwesomeIcon>
@@ -176,7 +186,7 @@ function getDownloadButton(): ReactElement {
   );
 }
 
-function getLine(): ReactElement {
+function GetLine(): ReactElement {
   return (
     <div className={styles.line}></div>
   );
@@ -187,18 +197,5 @@ function getProjects(projects: bulletinProps[]): ReactElement[] {
     projects.map((project, index) => (
       <Bulletin key={index} title={project.title} description={project.description} graphics={project.graphics} dates={project.dates}></Bulletin>
     ))
-  );
-}
-
-function getSettings(): ReactElement {
-  const languageSettings: dropDownData = {
-    title: "Please select a language:",
-    items: ["English","Spanish"]
-  }
-  return (
-  <div>
-    { getDropDownMenu(languageSettings) }
-  </div>
-
   );
 }
