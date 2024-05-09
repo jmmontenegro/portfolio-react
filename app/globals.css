@@ -94,6 +94,8 @@ body {
   padding-right: env(safe-area-inset-right);
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+  min-height: -webkit-fill-available;
+  
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

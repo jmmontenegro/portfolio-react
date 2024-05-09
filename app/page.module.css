@@ -7,6 +7,10 @@
   background-color: rgb(27, 27, 27); 
   color: rgb(239, 236, 236);
   font-family: var(--font-mono);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  min-height: -webkit-fill-available;
 }
 
 .header {
