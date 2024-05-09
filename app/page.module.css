@@ -70,7 +70,14 @@
 
 .downloadButton:hover {
   background-color: rgb(60,60,60);
+  cursor: pointer;
 }
+
+.settingsButton {
+  margin-top: 10px;
+  z-index: 1;
+}
+
 
 @media (max-width: 1000px) {
   .resume {
@@ -78,7 +85,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .title {
     font-size: 35px;
   }

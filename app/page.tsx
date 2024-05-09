@@ -1,14 +1,19 @@
-import { ReactElement } from "react";
+"use client";
+
+import { ReactElement, useContext } from "react";
 import Bulletin from "./components/bulletin/bulletin";
 import styles from "./page.module.css";
 import Borders from "./components/borders/borders";
 import { bulletinProps } from "./components/bulletin/bulletin.interface";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
+import  { faCog, faFileDownload }  from '@fortawesome/free-solid-svg-icons';
 import raycasterDemo1 from "../app/resources/raycaster_demo1.gif";
 import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
 import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
 import StarBackground from "./components/star-background/star-background";
+import GetDialog from "./components/dialog/dialog";
+import React from "react";
+import { BackgroundContext, GetSettings, SettingsProvider } from "./components/settings/settings";
 
 export default function Home(): ReactElement {
   
@@ -130,14 +135,13 @@ export default function Home(): ReactElement {
   };
   return (
     <main className={styles.main}>
-      <StarBackground/>
-        { getHeader() }
-        { getLine() }
+      <SettingsProvider>
+        <GetBackground/>
+      </SettingsProvider>
+      <GetHeader/>
+      <GetLine/>
       <div className={styles.resume}>
-        <a className={styles.downloadButton} href={"Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}>
-          <FontAwesomeIcon icon={faFileDownload} width={50} height={50}></FontAwesomeIcon>
-          Download Resume
-        </a>
+        <GetDownloadButton/>
         <Bulletin title={statement.title} description={statement.description}></Bulletin>
         <Bulletin title={skills.title} bullets={skills.bullets}></Bulletin>
         <Borders>Experience</Borders>
@@ -149,12 +153,21 @@ export default function Home(): ReactElement {
         <Borders>Education</Borders>
         <Bulletin title={education.title} description={education.description} dates={education.dates}></Bulletin>
       </div>
-      { getLine() }
+      <GetLine/>
+
+      <div className={styles.settingsButton} hidden={true}>
+        <GetDialog title={"Settings"} content={<GetSettings/>} buttonIcon={faCog} iconSize="3x"/>
+      </div>
     </main>
   );
 }
 
-function getHeader(): ReactElement {
+function GetBackground(): ReactElement | null {
+  const { isEnabled } = useContext(BackgroundContext);
+  return isEnabled ? <StarBackground /> : null;
+}
+
+function GetHeader(): ReactElement {
   return (
     <div className={styles.header}>
       <h1 className={styles.title}>Jacob Montenegro</h1>
@@ -164,15 +177,18 @@ function getHeader(): ReactElement {
   );
 }
 
-function getLine(): ReactElement {
+function GetDownloadButton(): ReactElement {
   return (
-    <div className={styles.line}></div>
+    <a className={styles.downloadButton} href={"Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}>
+      <FontAwesomeIcon icon={faFileDownload} size={"2x"} width={40} height={40}></FontAwesomeIcon>
+      <p>Download Resume</p>
+    </a>
   );
 }
 
-function downloadPdf() {
+function GetLine(): ReactElement {
   return (
-    <a href={"website/app/resources/Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}></a>
+    <div className={styles.line}></div>
   );
 }
 
