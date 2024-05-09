@@ -30,7 +30,7 @@ export default function Home(): ReactElement {
   educationSection: string = '';
 
   data.map(json => {
-    const experienceSection:string = json.sections.experience.title;
+    experienceSection = json.sections.experience.title;
     projectSection = json.sections.project.title;
     leadershipSection = json.sections.leadership.title;
     educationSection = json.sections.education.title;
