@@ -1,0 +1,140 @@
+[
+    {
+        "mainHeader" : {
+            "softwareDev" : "Software Developer"
+        },
+        "downloadButton" : "Download Resume",
+        "dialogs" : {
+            "settings": {
+                "title": "Settings",
+                "languageSelect" : "Please select a language:",
+                "languages" : ["English", "Spanish"],
+                "enable" : "Enable",
+                "disable" : "Disable",
+                "background" : "background"
+            }
+        },
+        "sections" : {
+            "misc" : {
+                "personalStatement" : {
+                    "title": "Personal Statement",
+                    "content" : "Experienced software developer skilled in designing and implementing robust software solutions. Proficient in various programming languages and frameworks, with a focus on creating efficient and scalable applications. Known for delivering high-quality code and innovative solutions that meet project requirements and exceed client expectations."
+                },
+                "keySkills" : {
+                    "title" : "Key Skills",
+                    "bullets": [
+                        {
+                            "main": "Proficiencies:",
+                            "keyPoints": [
+                                "TypeScript","Java", "Spring Boot", "Angular (13-16)",
+                                "Python.",
+                                "CI/CD",
+                                "PostgreSQL",
+                                "Fullstack development",
+                                "Front-end developement",
+                                "Back-end development",
+                                "Developing RESTful APIs",
+                                "Agile"
+                            ]
+                        },
+                        {
+                            "main": "Experienced:",
+                            "keyPoints": [
+                                "C and C++.",
+                                "Node.js",
+                                "TFS",
+                                "Linux (Ubuntu, Kali)",
+                                "GitHub"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "experience" : {
+                "title" : "Experience",
+                "experiences" : {
+                    "title" : "General Motors - Software Developer",
+                    "description" : [
+                        "Conducted in-depth research and developed solutions for a synthetic image generation team.",
+                        "Produced lifelike data to enhance AI computer vision models.",
+                        "Researched, designed, and implemented diagnostic solutions for vehicle defects.",
+                        "Leveraged a Spring Boot backend to create RESTful APIs.",
+                        "Developed a dynamic Angular (TypeScript) frontend for user interaction.",
+                        "Utilized PostgreSQL databases for data storage and retrieval."
+                    ],
+                    "dates" : "July 2021 – February 2024"
+                }
+            },
+            "project" : {
+                "title": "Projects",
+                "projects" : [
+                    {
+                        "title": "Raycaster Engine",
+                        "description": "Currently engaged in the development of a Raycasting Engine utilizing the C programming language. This project is an endeavor to enhance proficiency in the application of pointers, as well as memory management. This will further solidify understanding of these critical aspects of systems programming.",
+                        "dates": "April 2024",
+                        "graphics": []
+                    },
+                    {
+                        "title": "Raspberry Pi Development",
+                        "description": [
+                            "Implemented a network-wide ad-blocking solution using Pi-hole on a Raspberry Pi. This project involved setting up and configuring the Pi-hole to block web advertisements across all devices on my network.",
+                            "Successfully blocked unwanted content without the need for browser-based ad-blockers, improving overall network performance.",
+                            "Enhanced network security by setting up a Virtual Private Network (VPN) on the Raspberry Pi, allowing secure remote access to my home network.",
+                            "Gained hands-on experience with network configuration, Linux system administration, and cybersecurity best practices."
+                        ],
+                        "dates": "March 2024"
+                    },
+                    {
+                        "title": "Discord Bot",
+                        "description": [
+                            "Engineered an interactive Python-based bot for Discord, enhancing user engagement and community interaction.",
+                            "Implemented a feature for automated birthday announcements, fostering a sense of community and personal connection among members.",
+                            "Devised a welcoming system that sends personalized greetings to new members, promoting a friendly and inclusive environment.",
+                            "Integrated a music playing feature in chat, enriching the user experience and fostering a lively community atmosphere."
+                        ],
+                        "dates": "2022"
+                    },
+                    {
+                        "title": "Tutoring Tracking Tool",
+                        "description": [
+                            "Designed and implemented a Java-based comprehensive tutoring tracking tool aimed at streamlining the management of tutoring services.",
+                            "Developed a feature for logging and tracking hours, enhancing the efficiency of time management for both tutors and students.",
+                            "Implemented a sorting mechanism that categorizes tutors and students by their respective majors and courses, facilitating seamless matching of tutors with students.",
+                            "The tool significantly improved the organization of tutoring services, leading to increased productivity and better resource allocation."
+                        ],
+                        "dates": "2019-2021"
+                    },
+                    {
+                        "title": "Pen-Testing Tool",
+                        "description": [
+                            "Engineered a robust penetration testing application that integrates industry-standard tools such as Nmap and Wireshark into a unified Qt-based user interface.",
+                            "Leveraged the power of the Cassandra database for efficient data management and retrieval, enhancing the tool’s performance and scalability.",
+                            "Contributed to the promotion of robust security practices by enabling users to perform comprehensive network analysis and vulnerability assessments.",
+                            "The tool significantly improved the efficiency and effectiveness of penetration testing, thereby strengthening defense mechanisms and promoting cybersecurity."
+                        ],
+                        "dates": "August 2020 – May 2021"
+                    }
+                ]
+            },
+            "leadership" : {
+                "title" : "Leadership Awards",
+                "awards" : {
+                    "title": "General Motors - eDiagnostics",
+                    "description": [
+                    "Manufacturing in 2030 Award Winners.",
+                    "\"Enterprise Integration and Technology\" Finalists"
+                    ],
+                    "dates": "2023"
+                }
+            },
+            "education" : {
+                "title": "Education",
+                "degree" : {
+                    "title" : "The University of Texas at El Paso (UTEP)",
+                    "description": "Bachelor of Science in Computer Science with a Minor in Mathematics",
+                    "dates" : "August 2017 – May 2021"
+                }
+            }
+        }
+    }
+]

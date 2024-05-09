@@ -1,12 +1,19 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import dropDownData from "./dropdown.data";
 import styles from "./dropdown.module.css";
 
-export function getDropDownMenu(data: dropDownData): ReactElement {
+export function GetDropDownMenu(data: dropDownData): ReactElement {
+
+    const [selectedOption, setSelectedOption] = useState('');
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedOption(event.target.value);
+        data.onChange(event.target.value);
+    };
+
     return (
         <div className={styles.dropdown}>
             {data.title}
-            <select className={styles.options}>
+            <select className={styles.options} value={selectedOption} onChange={handleChange}>
             {data.items.map((item, index) => (
                 <option key={index}>{item}</option>
             ))}

@@ -1,0 +1,140 @@
+[
+    {
+        "mainHeader" : {
+            "softwareDev" : "Desarrollador de Software"
+        },
+        "downloadButton" : "Descargar Perfil Personal",
+        "dialogs" : {
+            "settings": {
+                "title":"Configuración",
+                "languageSelect" : "Por favor seleccione un idioma:",
+                "languages" : ["Español", "Inglés"],
+                "enable" : "Habilitar",
+                "disable" : "Desactivar",
+                "background" : "el fondo"
+            }
+        },
+        "sections" : {
+            "misc" : {
+                "personalStatement" : {
+                    "title": "Declaración Personal" ,
+                    "content" : "Desarrollador de software experimentado, hábil en el diseño e implementación de soluciones de software robustas. Competente en varios lenguajes de programación y marcos de trabajo, con un enfoque en la creación de aplicaciones eficientes y escalables. Conocido por entregar código de alta calidad y soluciones innovadoras que cumplen con los requisitos del proyecto y superan las expectativas del cliente."
+                },
+                "keySkills" : {
+                    "title" : "Competencias laborales",
+                    "bullets": [
+                        {
+                            "main": "Competente en:",
+                            "keyPoints": [
+                                "TypeScript","Java", "Spring Boot", "Angular (13-16)",
+                                "Python",
+                                "CI/CD",
+                                "PostgreSQL",
+                                "Desarrollo Fullstack",
+                                "Desarrollo Front-end",
+                                "Desarrollo Back-end",
+                                "Developing RESTful APIs",
+                                "Agile"
+                            ]
+                        },
+                        {
+                            "main": "Experiencia en:",
+                            "keyPoints": [
+                                "C and C++.",
+                                "Node.js",
+                                "TFS",
+                                "Linux (Ubuntu, Kali)",
+                                "GitHub"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "experience" : {
+                "title" : "Experiencia",
+                "experiences" : { 
+                    "title" : "General Motors - Desarrollador de Software",
+                    "description" : [
+                        "Llevé a cabo a cabo una investigación en profundidad y desarrolló soluciones para un equipo de generación de imágenes sintéticas.",
+                        "Produje datos realistas para mejorar los modelos de visión artificial de IA.",
+                        "Investigué, diseñv e implementé soluciones de diagnóstico para defectos de vehículos.",
+                        "Aproveché un backend de Spring Boot para crear API RESTful.",
+                        "Desarrollé un frontend dinámico de Angular (TypeScript) para la interacción del usuario.",
+                        "Utilicé bases de datos PostgreSQL para el almacenamiento y recuperación de datos."
+                    ],
+                    "dates" : "Julio 2021 – Febrero 2024"
+                }
+            },
+            "project" : {
+                "title": "Proyectos",
+                "projects" : [
+                    {
+                        "title": "Motor Raycaster",
+                        "description": "Actualmente estoy involucrado en el desarrollo de un motor de raycasting utilizando el lenguaje de programación C. Este proyecto es un esfuerzo para mejorar la competencia en la aplicación de punteros, así como la gestión de la memoria. Esto solidificará aún más la comprensión de estos aspectos críticos de la programación de sistemas.",
+                        "dates": "Abril 2024",
+                        "graphics": []
+                    },
+                    {
+                        "title": "Desarrollo de Raspberry Pi",
+                        "description": [
+                            "Implementé una solución de bloqueo de anuncios en toda la red utilizando Pi-hole en una Raspberry Pi. Este proyecto implicó la instalación y configuración de Pi-hole para bloquear los anuncios web en todos los dispositivos de mi red.", 
+                            "Bloqueé con éxito el contenido no deseado sin necesidad de bloqueadores de anuncios basados en el navegador, lo que mejoró el rendimiento general de la red.", 
+                            "Mejoré la seguridad de la red mediante la configuración de una red privada virtual (VPN) en la Raspberry Pi, lo que permite un acceso remoto seguro a mi red doméstica.", 
+                            "Adquirí experiencia práctica con la configuración de redes, la administración de sistemas Linux y las mejores prácticas de ciberseguridad."
+                        ],
+                        "dates": "Marzo 2024"
+                    },
+                    {
+                        "title": "Bot de Discord",
+                        "description": [
+                            "Diseñé un bot interactivo basado en Python para Discord, mejorando la participación de los usuarios y la interacción con la comunidad.",
+                            "Implementé una función para anuncios de cumpleaños automatizados, fomentando un sentido de comunidad y conexión personal entre los miembros.",
+                            "Ideé un sistema de bienvenida que envía saludos personalizados a los nuevos miembros, promoviendo un ambiente amigable e inclusivo.",
+                            "Se integró una función de reproducción de música en el chat, enriqueciendo la experiencia del usuario y fomentando una animada atmósfera de comunidad."
+                        ],
+                        "dates": "2022"
+                    },
+                    {
+                        "title": "Aplicación de Seguimiento de Tutoría",
+                        "description": [
+                            "Diseñé e implementé una aplicación integral de seguimiento de tutorías basada en Java destinada a agilizar la gestión de los servicios de tutoría.",
+                            "Desarrollé una función para registrar y rastrear horas, mejorando la eficiencia de la gestión del tiempo tanto para los tutores como para los estudiantes.",
+                            "Implementé un mecanismo de clasificación que clasifica a los tutores y estudiantes por sus respectivas especialidades y cursos, lo que facilita la coincidencia perfecta de tutores con estudiantes.",
+                            "La aplicación mejoró significativamente la organización de los servicios de tutoría, lo que llevó a una mayor productividad y una mejor asignación de recursos."
+                        ],
+                        "dates": "2019-2021"
+                    },
+                    {
+                        "title": "Aplicación de pruebas de penetración de ciberseguridad",
+                        "description": [
+                            "Diseñé una aplicación robusta de pruebas de penetración que integra herramientas estándar de la industria como Nmap y Wireshark en una interfaz de usuario unificada basada en Qt",
+                            "Aprovechó el poder de la base de datos de Cassandra para una gestión y recuperación de datos eficientes, mejorando el rendimiento y la escalabilidad de la aplicación",
+                            "Contribuyó a la promoción de prácticas de seguridad sólidas al permitir a los usuarios realizar análisis exhaustivos de la red y evaluaciones de vulnerabilidad.",
+                            "La aplicación mejoró significativamente la eficiencia y la eficacia de las pruebas de penetración, fortaleciendo así los mecanismos de defensa y promoviendo la ciberseguridad."
+                        ],
+                        "dates": "Agosto 2020 – Mayo 2021"
+                    }
+                ]
+            },
+            "leadership" : {
+                "title" : "Premios al Liderazgo",
+                "awards" : {
+                    "title": "General Motors - eDiagnostics",
+                    "description": [
+                    "Premiados en \"Manufacturing in 2030\"",
+                    "Finalistas de \"Enterprise Integration and Technology\""
+                    ],
+                    "dates": "2023"
+                }
+            },
+            "education" : {
+                "title": "Educación",
+                "degree": {
+                    "title" : "The University of Texas at El Paso (UTEP)",
+                    "description": "Licenciatura en Ciencias de la Computación con especialización en Matemáticas",
+                    "dates" : "Agosto 2017 – Mayo 2021"
+                }
+            }
+        }
+    }
+]

@@ -1,42 +1,54 @@
 "use client";
 
-import { ReactElement, ReactNode, createContext, useContext, useEffect, useState } from "react";
-import dropDownData from "../dropdown/dropdown.data";
-import { getDropDownMenu } from "../dropdown/dropdown";
+import { ReactElement, ReactNode, createContext, useContext, useState } from "react";
+import { GetDropDownMenu } from "../dropdown/dropdown";
+import { GetLanguage } from "./language";
 
-export const BackgroundContext = createContext({ isEnabled: false, toggleDisplay: () => {} });
+export const SettingsContext = createContext({ isEnabled: false, toggleDisplay: () => {}, selectedOption: '', setSelectedOption: (value: string) => {} });
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [isEnabled, setIsEnabled] = useState(false);
 
+  const [selectedOption, setSelectedOption] = useState('');
+
   const toggleDisplay = () => {
     setIsEnabled(prevState => !prevState);
-    console.log('Toggled');
   };
 
-  useEffect(() => {
-    console.log(`Is Enabled: ${isEnabled}`);
-  }, [isEnabled]);
-
   return (
-    <BackgroundContext.Provider value={{ isEnabled, toggleDisplay }}>
+    <SettingsContext.Provider value={{ isEnabled, toggleDisplay, selectedOption, setSelectedOption }}>
       {children}
-    </BackgroundContext.Provider>
+    </SettingsContext.Provider>
   );
 }
 
 export function GetSettings(): ReactElement {
-  const languageSettings: dropDownData = {
-    title: "Please select a language:",
-    items: ["English","Spanish"]
-  }
 
-  const { isEnabled, toggleDisplay } = useContext(BackgroundContext);
+  const data = GetLanguage();
+  let title:string="", 
+  items:string[] = [],
+  enable:string = '',
+  disable:string = '',
+  background:string = '';
+
+  data.map(json => {
+    title = json.dialogs.settings.languageSelect;
+    items = json.dialogs.settings.languages;
+    enable = json.dialogs.settings.enable;
+    disable = json.dialogs.settings.disable;
+    background = json.dialogs.settings.background;
+  });
+
+  const { isEnabled, toggleDisplay, selectedOption, setSelectedOption  } = useContext(SettingsContext);
+
+  const handleDropdownChange = (selectedOption:string) => {
+      setSelectedOption(selectedOption);
+  };
   
   return (
   <div>
-    <button onClick={toggleDisplay}>{ isEnabled ? "Disable" : "Enabled" } Background</button>
-    { getDropDownMenu(languageSettings) }
+    <button onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
+    <GetDropDownMenu onChange={handleDropdownChange} title={title} items={items}/>
   </div>
   );
 }
