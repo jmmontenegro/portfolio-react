@@ -135,9 +135,7 @@ export default function Home(): ReactElement {
   };
   return (
     <main className={styles.main}>
-      <SettingsProvider>
         <GetBackground/>
-      </SettingsProvider>
       <GetHeader/>
       <GetLine/>
       <div className={styles.resume}>
@@ -154,8 +152,7 @@ export default function Home(): ReactElement {
         <Bulletin title={education.title} description={education.description} dates={education.dates}></Bulletin>
       </div>
       <GetLine/>
-
-      <div className={styles.settingsButton} hidden={true}>
+      <div className={styles.settingsButton}>
         <GetDialog title={"Settings"} content={<GetSettings/>} buttonIcon={faCog} iconSize="3x"/>
       </div>
     </main>

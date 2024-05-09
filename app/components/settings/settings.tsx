@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactElement, ReactNode, createContext, useContext, useEffect, useState } from "react";
 import dropDownData from "../dropdown/dropdown.data";
 import { getDropDownMenu } from "../dropdown/dropdown";
