@@ -13,7 +13,7 @@ import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
 import StarBackground from "./components/star-background/star-background";
 import GetDialog from "./components/dialog/dialog";
 import React from "react";
-import { GetLanguage, GetSettings, IsBackgroundEnabled } from "./components/settings/settings";
+import { GetLanguage, GetSettings, IsBackgroundEnabled, SettingsContext } from "./components/settings/settings";
 import MouseFollower from "./components/mouse-follower/mouse-follower";
 
 export default function Home(): ReactElement {
@@ -71,32 +71,41 @@ export default function Home(): ReactElement {
     };
   });
 
+  const { isRunningGame } = useContext(SettingsContext);
+
   return (
     <main className={styles.main}>
       <GetBackground/>
-      <GetHeader/>
-      <GetLine/>
-      <div className={styles.resume}>
-        <GetDownloadButton/>
-        <Bulletin title={statement.title} description={statement.description}></Bulletin>
-        <Bulletin title={skills.title} bullets={skills.bullets}></Bulletin>
-        <Borders>{experienceSection}</Borders>
-        <Bulletin title={experience.title} description={experience.description} dates={experience.dates}></Bulletin>
-        <Borders>{projectSection}</Borders>
-        { getProjects(projects) }
-        <Borders>{leadershipSection}</Borders>
-        <Bulletin title={awards.title} description={awards.description} dates={awards.dates}></Bulletin>
-        <Borders>{educationSection}</Borders>
-        <Bulletin title={education.title} description={education.description} dates={education.dates}></Bulletin>
-      </div>
-      <GetLine/>
+      { 
+        isRunningGame ? 
+        <MouseFollower/> 
+        :
+        <>
+          <GetHeader/>
+          <GetLine/>
+          <div className={styles.resume}>
+            <GetDownloadButton/>
+            <Bulletin title={statement.title} description={statement.description}></Bulletin>
+            <Bulletin title={skills.title} bullets={skills.bullets}></Bulletin>
+            <Borders>{experienceSection}</Borders>
+            <Bulletin title={experience.title} description={experience.description} dates={experience.dates}></Bulletin>
+            <Borders>{projectSection}</Borders>
+            { getProjects(projects) }
+            <Borders>{leadershipSection}</Borders>
+            <Bulletin title={awards.title} description={awards.description} dates={awards.dates}></Bulletin>
+            <Borders>{educationSection}</Borders>
+            <Bulletin title={education.title} description={education.description} dates={education.dates}></Bulletin>
+          </div>
+          <GetLine/>
+        </>
+      }
       <div className={styles.settingsButton}>
-        {
-          data.map((json, index) => (
-            <GetDialog key={index} title={json.dialogs.settings.title} content={<GetSettings/>} buttonIcon={faCog} iconSize="3x"/>
-          ))
-        }
-      </div>
+            {
+              data.map((json, index) => (
+                <GetDialog key={index} title={json.dialogs.settings.title} content={<GetSettings/>} buttonIcon={faCog} iconSize="3x"/>
+              ))
+            }
+          </div>
     </main>
   );
 }

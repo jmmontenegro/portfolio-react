@@ -1,13 +1,12 @@
 "use client";
 
-import { faClose, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactElement, useState } from "react";
 import styles from "./dialog.module.css";
 import dialogData from "./dialog.data";
 
 export default function GetDialog(data: dialogData): ReactElement {
-
     const [isDialogOpen, setDialogOpen] = useState(false);
 
     const handleClick = () => {
@@ -24,8 +23,8 @@ export default function GetDialog(data: dialogData): ReactElement {
           <div className={styles.dialogBoxShadow}>
             <div className={styles.dialogBox}>
               <div className={styles.dialogTitle}>{data.title}</div>
-              <div className={styles.dialogClose}>
-                <FontAwesomeIcon icon={faClose} className={styles.dialogCloseIcon} onClick={handleClose}/>
+              <div className={styles.dialogClose} onClick={handleClose}>
+                <FontAwesomeIcon icon={faClose}/>
               </div>
               <div className={styles.dialogContent}>{data.content}</div>
             </div>

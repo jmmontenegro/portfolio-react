@@ -34,7 +34,7 @@
 .line {
   border-bottom: 2px solid var(--kobe);
   width: 90vw;
-  z-index: 3;
+  z-index: 1;
 }
 
 .description {

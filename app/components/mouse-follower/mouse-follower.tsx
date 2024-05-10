@@ -1,22 +1,40 @@
 "use client";
 
-import React, { ReactElement, useState } from "react";
-import gif from "../../resources/raycaster_demo1.gif";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
+import gif from "../../resources/rocket.png";
 import Image from "next/image";
+import { throttle } from "lodash";
 
 export default function MouseFollower(): ReactElement {
     const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [rotation, setRotation] = useState(0);
+    const prevPosition = useRef({ x: 0, y: 0 });
 
-    const handleMouseMove = (event:MouseEvent) => {
-        setPosition({
+    const handleMouseMove = throttle((event:MouseEvent) => {
+        const newPosition = {
             x: event.clientX,
             y: event.clientY
-        });
-    };
+        };
+
+        // Calculate the angle of rotation
+        const dx = newPosition.x - prevPosition.current.x;
+        const dy = newPosition.y - prevPosition.current.y;
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI + 90; // Add 90 to rotate the image so that the top points towards the cursor
+
+        // Update the state
+        setPosition(newPosition);
+        setRotation(angle);
+
+        // Store the current position for the next mouse move event
+        prevPosition.current = newPosition;
+    }, 200); // Adjust this value as needed
+
+    const imageWidth = 50;
+    const imageHeight = 50;
 
     return (
-        <div style={{ position: 'fixed', top: 0, bottom: 0, left: 0, right: 0 }} onMouseMove={handleMouseMove}>
-            <Image src={gif} alt={''} height={50} width={50} style={{ position: 'fixed', top: position.y, left: position.x }}/>
+        <div style={{ cursor: 'none', position: 'fixed', top: 0, bottom: 0, left: 0, right: 0 }} onMouseMove={handleMouseMove}>
+            <Image src={gif} alt={''} height={imageHeight} width={imageWidth} style={{ position: 'fixed', top: position.y - imageHeight / 2, left: position.x - imageWidth / 2, transform: `rotate(${rotation}deg)`, transformOrigin: 'center top' }}/>
         </div>
     );
 };

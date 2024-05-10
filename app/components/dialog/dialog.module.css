@@ -36,6 +36,11 @@
     display: flex;
     flex-direction: row;
 }
+
+.dialogButton:hover {
+  background-color: rgb(60,60,60);
+  cursor: pointer;
+}
   
 .dialogTitle {
   font-size: large;
@@ -52,14 +57,15 @@
   align-items: center;
   border-radius: 50%;
   background-color: white;
+  &>* {
+    color: black;
+  }
 }
 
-.dialogCloseIcon {
-  color: black;
-}
-
-.dialogCloseIcon:hover {
-  color: red;
+.dialogClose:hover {
+  &>* {
+    color: red;
+  }
 }
 
 .rotateIcon {
