@@ -13,8 +13,8 @@ import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
 import StarBackground from "./components/star-background/star-background";
 import GetDialog from "./components/dialog/dialog";
 import React from "react";
-import { SettingsContext, GetSettings } from "./components/settings/settings";
-import { GetLanguage } from "./components/settings/language";
+import { GetLanguage, GetSettings, IsBackgroundEnabled } from "./components/settings/settings";
+import MouseFollower from "./components/mouse-follower/mouse-follower";
 
 export default function Home(): ReactElement {
   const data = GetLanguage();
@@ -101,16 +101,15 @@ export default function Home(): ReactElement {
   );
 }
 
-function GetBackground(): ReactElement | null {
-  const { isEnabled } = useContext(SettingsContext);
-  return isEnabled ? <StarBackground /> : null;
+function GetBackground(): ReactElement | boolean {
+  return IsBackgroundEnabled() && <StarBackground/>;
 }
 
 function GetHeader(): ReactElement {
 
   const data = GetLanguage();
   return (
-    <div>
+    <div className={styles.headerContainer}>
       {
         data.map((json, index) => (
           <div key={index} className={styles.header}>

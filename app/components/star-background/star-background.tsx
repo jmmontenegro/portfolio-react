@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import throttle from 'lodash/throttle';
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import throttle from "lodash/throttle";
 
 export default function StarBackground() {
     const [stars, setStars] = useState<{ top: number; left: number; scale: number }[]>(() => 
@@ -57,6 +57,8 @@ export default function StarBackground() {
             const ctx = canvas.getContext('2d');
             if (ctx) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
                 stars.forEach((star) => {
                     ctx.beginPath();
                     ctx.arc(star.left / 100 * canvas.width, star.top / 100 * canvas.height, star.scale, 0, 2 * Math.PI);
