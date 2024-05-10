@@ -50,7 +50,7 @@ const MovingDiv = ({ id, x, y, dx, dy, onRemove }) => {
     }, [dx, dy, id, onRemove, position]);
 
     return (
-        <div style={{ position: 'absolute', top: position.y, left: position.x, width: 50, height: 50, backgroundColor: 'red' }} />
+        <div style={{ position: 'absolute', top: position.y, left: position.x, width: 50, height: 50, backgroundColor: 'rgb(92, 64, 51)', borderRadius: "50%" }} />
     );
 };
 
