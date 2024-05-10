@@ -14,7 +14,8 @@ import StarBackground from "./components/star-background/star-background";
 import GetDialog from "./components/dialog/dialog";
 import React from "react";
 import { GetLanguage, GetSettings, IsBackgroundEnabled, SettingsContext } from "./components/settings/settings";
-import MouseFollower from "./components/mouse-follower/mouse-follower";
+import MouseFollower from "./components/game/mouse-follower/mouse-follower";
+import GetMeteors from "./components/game/meteor/meteor";
 
 export default function Home(): ReactElement {
   const data = GetLanguage();
@@ -78,7 +79,10 @@ export default function Home(): ReactElement {
       <GetBackground/>
       { 
         isRunningGame ? 
+        <>
         <MouseFollower/> 
+        <GetMeteors/>
+        </>
         :
         <>
           <GetHeader/>

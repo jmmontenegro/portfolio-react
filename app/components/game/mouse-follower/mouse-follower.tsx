@@ -1,7 +1,7 @@
 "use client";
 
-import React, { ReactElement, useEffect, useRef, useState } from "react";
-import gif from "../../resources/rocket.png";
+import React, { ReactElement, useRef, useState } from "react";
+import rocket from "../../../resources/rocket.png";
 import Image from "next/image";
 import { throttle } from "lodash";
 
@@ -34,7 +34,7 @@ export default function MouseFollower(): ReactElement {
 
     return (
         <div style={{ cursor: 'none', position: 'fixed', top: 0, bottom: 0, left: 0, right: 0 }} onMouseMove={handleMouseMove}>
-            <Image src={gif} alt={''} height={imageHeight} width={imageWidth} style={{ position: 'fixed', top: position.y - imageHeight / 2, left: position.x - imageWidth / 2, transform: `rotate(${rotation}deg)`, transformOrigin: 'center top' }}/>
+            <Image src={rocket} alt={''} height={imageHeight} width={imageWidth} style={{ position: 'fixed', top: position.y - imageHeight / 2, left: position.x - imageWidth / 2, transform: `rotate(${rotation}deg)`, transformOrigin: 'center top' }}/>
         </div>
     );
 };
