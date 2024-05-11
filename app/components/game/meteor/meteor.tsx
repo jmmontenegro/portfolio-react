@@ -53,7 +53,7 @@ const MovingDiv = ({ id, x, y, dx, dy, onRemove } : { id: number, x: number, y: 
     }, [dx, dy, id, onRemove, position]);
 
     useEffect(() => {
-        const handleMouseMove = (event) => {
+        const handleMouseMove = (event: MouseEvent) => {
             const mouseX = event.clientX;
             const mouseY = event.clientY;
 
