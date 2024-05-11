@@ -28,7 +28,7 @@ const getRandomDirection = () => {
     return { dx, dy };
 };
 
-const MovingDiv = ({ id, x, y, dx, dy, onRemove } : { id: number, x: number, y: number, dx: number, dy: number, onRemove: (id: number) => {} }) => {
+const MovingDiv = ({ id, x, y, dx, dy, onRemove } : { id: number, x: number, y: number, dx: number, dy: number, onRemove: (id: number) => void }) => {
     const [position, setPosition] = useState({ x, y });
     const { setGameState } = useContext(SettingsContext);
 
