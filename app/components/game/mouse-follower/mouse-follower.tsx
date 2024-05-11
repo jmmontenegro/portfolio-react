@@ -10,7 +10,7 @@ export default function MouseFollower(divs:any): ReactElement {
     const [rotation, setRotation] = useState(0);
     const prevPosition = useRef({ x: 0, y: 0 });
 
-    const handleMouseMove = throttle((event:MouseEvent) => {
+    const handleMouseMove = throttle((event:React.MouseEvent) => {
         const newPosition = {
             x: event.clientX,
             y: event.clientY
