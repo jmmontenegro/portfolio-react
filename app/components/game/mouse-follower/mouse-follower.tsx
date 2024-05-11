@@ -5,7 +5,7 @@ import rocket from "../../../resources/rocket.png";
 import Image from "next/image";
 import { throttle } from "lodash";
 
-export default function MouseFollower(): ReactElement {
+export default function MouseFollower(divs:any): ReactElement {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [rotation, setRotation] = useState(0);
     const prevPosition = useRef({ x: 0, y: 0 });
@@ -27,7 +27,7 @@ export default function MouseFollower(): ReactElement {
 
         // Store the current position for the next mouse move event
         prevPosition.current = newPosition;
-    }, 200); // Adjust this value as needed
+    }, 50); // Adjust this value as needed
 
     const imageWidth = 50;
     const imageHeight = 50;

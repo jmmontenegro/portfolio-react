@@ -1,4 +1,6 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useContext, useEffect, useState } from "react";
+import { SettingsContext } from "../../settings/settings";
+import MouseFollower from "../mouse-follower/mouse-follower";
 
 // Function to generate a random position outside the window
 const getRandomPosition = () => {
@@ -29,12 +31,13 @@ const getRandomDirection = () => {
 
 const MovingDiv = ({ id, x, y, dx, dy, onRemove }) => {
     const [position, setPosition] = useState({ x, y });
+    const { setGameState } = useContext(SettingsContext);
 
     useEffect(() => {
         const interval = setInterval(() => {
             const newPosition = {
-                x: position.x + dx * Math.max(5, Math.random() * 40), // Adjust speed as needed
-                y: position.y + dy * Math.max(5, Math.random() * 40)
+                x: position.x + dx * Math.max(5, Math.random() * 10), // Adjust speed as needed
+                y: position.y + dy * Math.max(5, Math.random() * 10)
             };
 
             setPosition(newPosition);
@@ -44,30 +47,51 @@ const MovingDiv = ({ id, x, y, dx, dy, onRemove }) => {
                 clearInterval(interval);
                 onRemove(id); // Remove the div
             }
-        }, 20);
+        }, 30);
 
         return () => clearInterval(interval);
     }, [dx, dy, id, onRemove, position]);
 
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // Check if the mouse position matches the div's position
+            if (Math.abs(mouseX - position.x) < 50 && Math.abs(mouseY - position.y) < 50) {
+                setGameState();
+            }
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, [position, setGameState]);
+
     return (
-        <div style={{ position: 'absolute', top: position.y, left: position.x, width: 50, height: 50, backgroundColor: 'rgb(92, 64, 51)', borderRadius: "50%" }} />
+        <div style={{ position: 'absolute', top: position.y, left: position.x, width: 50, height: 50, backgroundColor: 'rgb(60, 60, 60)' }} />
     );
 };
 
 export default function GetMeteors(): ReactElement {
     const [divs, setDivs] = useState([]);
+    const [intervalTime, setIntervalTime] = useState(300); // Initialize interval time to 300
 
     useEffect(() => {
         const interval = setInterval(() => {
             const position = getRandomPosition();
             const direction = getRandomDirection();
             setDivs(prevDivs => [...prevDivs, { id: Math.random(), ...position, ...direction }]);
-        }, 80);
+
+            setIntervalTime(prevTime => Math.max(50, prevTime - 5));
+        }, intervalTime);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [intervalTime]); // Add intervalTime as a dependency
 
-    const handleRemove = (id) => {
+    const handleRemove = (id:number) => {
         setDivs(prevDivs => prevDivs.filter(div => div.id !== id));
     };
 
@@ -76,6 +100,7 @@ export default function GetMeteors(): ReactElement {
             {divs.map((props) => (
                 <MovingDiv key={props.id} {...props} onRemove={handleRemove} />
             ))}
+            <MouseFollower divs={divs} />
         </div>
     );
 }
