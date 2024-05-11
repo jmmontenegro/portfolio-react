@@ -20,7 +20,6 @@ const getRandomPosition = () => {
     return { x, y };
 };
 
-
 // Function to generate a random direction
 const getRandomDirection = () => {
     const angle = Math.random() * 2 * Math.PI; // Random angle in radians
@@ -75,8 +74,16 @@ const MovingDiv = ({ id, x, y, dx, dy, onRemove } : { id: number, x: number, y: 
     );
 };
 
+type Div = {
+    id: number;
+    x: number;
+    y: number;
+    dx: number;
+    dy: number;
+  };
+
 export default function GetMeteors(): ReactElement {
-    const [divs, setDivs] = useState([]);
+    const [divs, setDivs] = useState<Div[]>([]);
     const [intervalTime, setIntervalTime] = useState(300); // Initialize interval time to 300
 
     useEffect(() => {
