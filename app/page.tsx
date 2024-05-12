@@ -19,7 +19,7 @@ export default function Home(): React.ReactElement {
   return (
     <main className={styles.main}>
       <GetBackground/>
-      <GetHTMLOnGameCondition/>
+      <GetHTMLOnCondition/>
       <div className={styles.settingsButton}>
         {
           data.map((json, index) => (
@@ -59,7 +59,7 @@ function GetLine(): React.ReactElement {
   );
 }
 
-function GetHTMLOnGameCondition(): React.ReactElement {
+function GetHTMLOnCondition(): React.ReactElement {
   const { isRunningGame } = GetSettingsContext();
 
   return (
@@ -98,7 +98,6 @@ function GetDownloadButton(): React.ReactElement {
 }
 
 function GetSections(): React.ReactElement {
-
   const data = GetLanguage();
   const sectionMaster: sectionProps[] = [];
   
