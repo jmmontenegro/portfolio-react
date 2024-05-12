@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactElement, useContext, useEffect, useState } from "react";
 import { SettingsContext } from "../../settings/settings";
 import MouseFollower from "../mouse-follower/mouse-follower";

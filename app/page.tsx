@@ -4,14 +4,10 @@ import styles from "./page.module.css";
 import Section from "./components/section/section";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faFileDownload }  from '@fortawesome/free-solid-svg-icons';
-import raycasterDemo1 from "../app/resources/raycaster_demo1.gif";
-import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
-import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
 import StarBackground from "./components/star-background/star-background";
 import GetDialog from "./components/dialog/dialog";
 import { GetLanguage, GetSettings, GetSettingsContext, IsBackgroundEnabled } from "./components/settings/settings";
 import GetMeteors from "./components/game/meteor/meteor";
-import { sectionProps } from "./components/section/section.data";
 
 export default function Home(): React.ReactElement {
   const data = GetLanguage();
@@ -89,9 +85,9 @@ function GetDownloadButton(): React.ReactElement {
     <a className={styles.downloadButton} href={"Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}>
       <FontAwesomeIcon icon={faFileDownload} size={"2x"} width={40} height={40}></FontAwesomeIcon>
       {
-        data.map((json, index) => (
+        data.map((json, index) => 
           <p key={index}>{json.downloadButton}</p>
-        ))
+        )
       }
     </a>
   );
@@ -99,24 +95,16 @@ function GetDownloadButton(): React.ReactElement {
 
 function GetSections(): React.ReactElement {
   const data = GetLanguage();
-  const sectionMaster: sectionProps[] = [];
-  
-  data.map((json:any) => {
-    Object.keys(json.sections).forEach((sectionKey:string) => {
-      let section = json.sections[sectionKey];
-      if (section.sectionTitle === "Projects") {
-        section.bulletins[0].graphics = [raycasterDemo1, raycasterDemo2, raycasterDemo3]
-      }
-      sectionMaster.push(section);
-    })
-  });
 
   return (
     <>
       {
-        sectionMaster.map((section, index) => {
-          return <Section key={index} sectionTitle={section.sectionTitle} bulletins={section.bulletins}/>
-        })
+        data.flatMap((json:any) => 
+          Object.keys(json.sections).map((sectionKey:string, index) => {
+            let section = json.sections[sectionKey];
+            return <Section key={index} sectionTitle={section.sectionTitle} bulletins={section.bulletins}/>;
+          })
+        )
       }
     </>
   );

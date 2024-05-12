@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactElement, useState } from "react";
 import dropDownData from "./dropdown.data";
 import styles from "./dropdown.module.css";

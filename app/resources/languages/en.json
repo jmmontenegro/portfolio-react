@@ -80,7 +80,7 @@
                         "title": "Raycaster Engine",
                         "description": "Currently engaged in the development of a Raycasting Engine utilizing the C programming language. This project is an endeavor to enhance proficiency in the application of pointers, as well as memory management. This will further solidify understanding of these critical aspects of systems programming.",
                         "dates": "April 2024",
-                        "graphics": []
+                        "graphics": ["/resources/raycaster_demo1.gif", "/resources/raycaster_demo2.gif", "/resources/raycaster_demo3.gif"]
                     },
                     {
                         "title": "Raspberry Pi Development",
