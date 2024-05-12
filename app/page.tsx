@@ -1,120 +1,42 @@
 "use client";
 
-import { ReactElement, useContext } from "react";
-import Bulletin from "./components/bulletin/bulletin";
 import styles from "./page.module.css";
-import Borders from "./components/borders/borders";
-import { bulletinProps } from "./components/bulletin/bulletin.interface";
+import Section from "./components/section/section";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import  { faCog, faFileDownload }  from '@fortawesome/free-solid-svg-icons';
+import { faCog, faFileDownload }  from '@fortawesome/free-solid-svg-icons';
 import raycasterDemo1 from "../app/resources/raycaster_demo1.gif";
 import raycasterDemo2 from "../app/resources/raycaster_demo2.gif";
 import raycasterDemo3 from "../app/resources/raycaster_demo3.gif";
 import StarBackground from "./components/star-background/star-background";
 import GetDialog from "./components/dialog/dialog";
-import React from "react";
-import { GetLanguage, GetSettings, IsBackgroundEnabled, SettingsContext } from "./components/settings/settings";
+import { GetLanguage, GetSettings, GetSettingsContext, IsBackgroundEnabled } from "./components/settings/settings";
 import GetMeteors from "./components/game/meteor/meteor";
+import { sectionProps } from "./components/section/section.data";
 
-export default function Home(): ReactElement {
+export default function Home(): React.ReactElement {
+
   const data = GetLanguage();
-  let statement: bulletinProps = {title: ''},
-  skills: bulletinProps = {title: ''},
-  experience: bulletinProps = {title: ''},
-  projects: bulletinProps[] = [],
-  education: bulletinProps  = {title: ''},
-  awards: bulletinProps = {title: ''},
-  experienceSection: string = '',
-  projectSection: string = '',
-  leadershipSection: string = '',
-  educationSection: string = '';
-
-  data.map(json => {
-    experienceSection = json.sections.experience.title;
-    projectSection = json.sections.project.title;
-    leadershipSection = json.sections.leadership.title;
-    educationSection = json.sections.education.title;
-
-    statement = {
-      title: json.sections.misc.personalStatement.title,
-      description: json.sections.misc.personalStatement.content
-    };
-
-    skills = {
-      title: json.sections.misc.keySkills.title,
-      bullets: json.sections.misc.keySkills.bullets
-    }
-
-    experience = {
-      title: json.sections.experience.experiences.title,
-      description : json.sections.experience.experiences.description,
-      dates: json.sections.experience.experiences.dates
-    };
-
-    projects = json.sections.project.projects;
-
-    projects.forEach(project => {
-      if (project.graphics !== undefined)
-        project.graphics = [raycasterDemo1, raycasterDemo2, raycasterDemo3]
-    })
-    
-    education = {
-      title: json.sections.education.degree.title,
-      description: json.sections.education.degree.description,
-      dates: json.sections.education.degree.dates
-    };
-
-    awards = {
-      title: json.sections.leadership.awards.title,
-      description: json.sections.leadership.awards.description,
-      dates: json.sections.leadership.awards.dates
-    };
-  });
-
-  const { isRunningGame } = useContext(SettingsContext);
 
   return (
     <main className={styles.main}>
       <GetBackground/>
-      { 
-        isRunningGame ? 
-        <GetMeteors/>
-        :
-        <>
-          <GetHeader/>
-          <GetLine/>
-          <div className={styles.resume}>
-            <GetDownloadButton/>
-            <Bulletin title={statement.title} description={statement.description}></Bulletin>
-            <Bulletin title={skills.title} bullets={skills.bullets}></Bulletin>
-            <Borders>{experienceSection}</Borders>
-            <Bulletin title={experience.title} description={experience.description} dates={experience.dates}></Bulletin>
-            <Borders>{projectSection}</Borders>
-            { getProjects(projects) }
-            <Borders>{leadershipSection}</Borders>
-            <Bulletin title={awards.title} description={awards.description} dates={awards.dates}></Bulletin>
-            <Borders>{educationSection}</Borders>
-            <Bulletin title={education.title} description={education.description} dates={education.dates}></Bulletin>
-          </div>
-          <GetLine/>
-        </>
-      }
+      <GetHTMLOnGameCondition/>
       <div className={styles.settingsButton}>
-            {
-              data.map((json, index) => (
-                <GetDialog key={index} title={json.dialogs.settings.title} content={<GetSettings/>} buttonIcon={faCog} iconSize="3x"/>
-              ))
-            }
-          </div>
+        {
+          data.map((json, index) => (
+            <GetDialog key={index} title={json.dialogs.settings.title} content={<GetSettings/>} buttonIcon={faCog} iconSize="3x"/>
+          ))
+        }
+      </div>
     </main>
   );
 }
 
-function GetBackground(): ReactElement | boolean {
+function GetBackground(): React.ReactElement | boolean {
   return IsBackgroundEnabled() && <StarBackground/>;
 }
 
-function GetHeader(): ReactElement {
+function GetHeader(): React.ReactElement {
 
   const data = GetLanguage();
   return (
@@ -132,7 +54,44 @@ function GetHeader(): ReactElement {
   );
 }
 
-function GetDownloadButton(): ReactElement {
+function GetLine(): React.ReactElement {
+  return (
+    <div className={styles.line}/>
+  );
+}
+
+function getSection(data: sectionProps): React.ReactElement {
+
+  return (
+    <Section sectionTitle={data.sectionTitle} bulletins={data.bulletins}/>
+  );
+}
+
+function GetHTMLOnGameCondition(): React.ReactElement {
+
+  const { isRunningGame } = GetSettingsContext();
+
+  return (
+    <>
+    { 
+      isRunningGame ? 
+      <GetMeteors/>
+      :
+      <>
+        <GetHeader/>
+        <GetLine/>
+        <div className={styles.resume}>
+          <GetDownloadButton/>
+          <SetSections/>
+        </div>
+        <GetLine/>
+      </>
+      }
+    </>
+  );
+}
+
+function GetDownloadButton(): React.ReactElement {
 
   const data = GetLanguage();
   return (
@@ -147,16 +106,87 @@ function GetDownloadButton(): ReactElement {
   );
 }
 
-function GetLine(): ReactElement {
-  return (
-    <div className={styles.line}></div>
-  );
-}
+function SetSections(): React.ReactElement {
 
-function getProjects(projects: bulletinProps[]): ReactElement[] {
+  const data = GetLanguage();
+  let statement: sectionProps = { bulletins: [] },
+  skills: sectionProps = { bulletins: [] },
+  experience: sectionProps = { bulletins: [] },
+  projects: sectionProps = { bulletins: [] },
+  education: sectionProps = { bulletins: [] },
+  awards: sectionProps = { bulletins: [] };
+
+  data.map(json => {
+    statement = {
+      bulletins: [
+        {
+          title: json.sections.misc.personalStatement.title,
+          description: json.sections.misc.personalStatement.content
+        }
+      ]
+    };
+
+    skills = {
+      bulletins: [
+        {
+          title: json.sections.misc.keySkills.title,
+          bullets: json.sections.misc.keySkills.bullets
+        }
+      ]
+    }
+
+    experience = {
+      sectionTitle: json.sections.experience.title,
+      bulletins: [
+        {
+          title: json.sections.experience.experiences.title,
+          description : json.sections.experience.experiences.description,
+          dates: json.sections.experience.experiences.dates
+        }
+      ]
+    };
+
+    projects = {
+      sectionTitle: json.sections.project.title,
+      bulletins: json.sections.project.projects
+    };
+
+    projects.bulletins.forEach(project => {
+      if (project.graphics !== undefined)
+        project.graphics = [raycasterDemo1, raycasterDemo2, raycasterDemo3]
+    })
+    
+    education = {
+      sectionTitle: json.sections.education.title,
+      bulletins: [
+        {
+          title: json.sections.education.degree.title,
+          description: json.sections.education.degree.description,
+          dates: json.sections.education.degree.dates
+        }
+      ]
+    };
+
+    awards = {
+      sectionTitle: json.sections.leadership.title,
+      bulletins: [
+        {
+          title: json.sections.leadership.awards.title,
+          description: json.sections.leadership.awards.description,
+          dates: json.sections.leadership.awards.dates
+        }
+      ]
+    };
+  });
+
   return (
-    projects.map((project, index) => (
-      <Bulletin key={index} title={project.title} description={project.description} graphics={project.graphics} dates={project.dates}></Bulletin>
-    ))
+    <>
+      {getSection(statement)}
+      {getSection(skills)}
+      {getSection(experience)}
+      {getSection(projects)}
+      {getSection(awards)}
+      {getSection(education)}
+    </>
   );
 }

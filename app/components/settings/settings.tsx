@@ -86,3 +86,7 @@ export function GetLanguage() {
       return en;
   }
 }
+
+export function GetSettingsContext(): typeof defaultSettings {
+  return useContext(SettingsContext);
+}
