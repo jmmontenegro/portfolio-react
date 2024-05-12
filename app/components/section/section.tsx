@@ -4,7 +4,8 @@ import { sectionProps } from "./section.data";
 
 export default function Section(section: sectionProps): React.ReactElement {
     return (
-      <>{
+      <>
+        {
           section.sectionTitle &&
           <div className={styles.section}>
             <h3 className={styles.title}>{section.sectionTitle}</h3>
