@@ -80,7 +80,7 @@
                         "title": "Motor Raycaster",
                         "description": "Actualmente estoy involucrado en el desarrollo de un motor de raycasting utilizando el lenguaje de programación C. Este proyecto es un esfuerzo para mejorar la competencia en la aplicación de punteros, así como la gestión de la memoria. Esto solidificará aún más la comprensión de estos aspectos críticos de la programación de sistemas.",
                         "dates": "Abril 2024",
-                        "graphics": []
+                        "graphics": ["/resources/raycaster_demo1.gif", "/resources/raycaster_demo2.gif", "/resources/raycaster_demo3.gif"]
                     },
                     {
                         "title": "Desarrollo de Raspberry Pi",
