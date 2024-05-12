@@ -15,64 +15,72 @@
             }
         },
         "sections" : {
-            "misc" : {
-                "personalStatement" : {
-                    "title": "Personal Statement",
-                    "content" : "Experienced software developer skilled in designing and implementing robust software solutions. Proficient in various programming languages and frameworks, with a focus on creating efficient and scalable applications. Known for delivering high-quality code and innovative solutions that meet project requirements and exceed client expectations."
-                },
-                "keySkills" : {
-                    "title" : "Key Skills",
-                    "bullets": [
-                        {
-                            "main": "Proficiencies:",
-                            "keyPoints": [
-                                "TypeScript","Java", "Spring Boot", "Angular (13-16)",
-                                "Python.",
-                                "CI/CD",
-                                "PostgreSQL",
-                                "Fullstack development",
-                                "Front-end developement",
-                                "Back-end development",
-                                "Developing RESTful APIs",
-                                "Agile"
-                            ]
-                        },
-                        {
-                            "main": "Experienced:",
-                            "keyPoints": [
-                                "C and C++.",
-                                "Node.js",
-                                "TFS",
-                                "Linux (Ubuntu, Kali)",
-                                "GitHub"
-                            ]
-                        }
-                    ]
-                }
+            "personalStatement": {
+                "bulletins" : [
+                    {
+                        "title": "Personal Statement",
+                        "description" : "Experienced software developer skilled in designing and implementing robust software solutions. Proficient in various programming languages and frameworks, with a focus on creating efficient and scalable applications. Known for delivering high-quality code and innovative solutions that meet project requirements and exceed client expectations."
+                    }
+                ]
+            },
+            "keySkills" : {
+                "bulletins" : [
+                    {
+                        "title" : "Key Skills",
+                        "bullets": [
+                            {
+                                "main": "Proficiencies:",
+                                "keyPoints": [
+                                    "TypeScript","Java", "Spring Boot", "Angular (13-16)",
+                                    "Python.",
+                                    "CI/CD",
+                                    "PostgreSQL",
+                                    "Fullstack development",
+                                    "Front-end developement",
+                                    "Back-end development",
+                                    "Developing RESTful APIs",
+                                    "Agile"
+                                ]
+                            },
+                            {
+                                "main": "Experienced:",
+                                "keyPoints": [
+                                    "C and C++.",
+                                    "Node.js",
+                                    "TFS",
+                                    "Linux (Ubuntu, Kali)",
+                                    "GitHub"
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             "experience" : {
-                "title" : "Experience",
-                "experiences" : {
-                    "title" : "General Motors - Software Developer",
-                    "description" : [
-                        "Conducted in-depth research and developed solutions for a synthetic image generation team.",
-                        "Produced lifelike data to enhance AI computer vision models.",
-                        "Researched, designed, and implemented diagnostic solutions for vehicle defects.",
-                        "Leveraged a Spring Boot backend to create RESTful APIs.",
-                        "Developed a dynamic Angular (TypeScript) frontend for user interaction.",
-                        "Utilized PostgreSQL databases for data storage and retrieval."
-                    ],
-                    "dates" : "July 2021 – February 2024"
-                }
+                "sectionTitle" : "Experience",
+                "bulletins" : [
+                    {
+                        "title" : "General Motors - Software Developer",
+                        "description" : [
+                            "Conducted in-depth research and developed solutions for a synthetic image generation team.",
+                            "Produced lifelike data to enhance AI computer vision models.",
+                            "Researched, designed, and implemented diagnostic solutions for vehicle defects.",
+                            "Leveraged a Spring Boot backend to create RESTful APIs.",
+                            "Developed a dynamic Angular (TypeScript) frontend for user interaction.",
+                            "Utilized PostgreSQL databases for data storage and retrieval."
+                        ],
+                        "dates" : "July 2021 – February 2024"
+                    }
+                ]
             },
             "project" : {
-                "title": "Projects",
-                "projects" : [
+                "sectionTitle": "Projects",
+                "bulletins" : [
                     {
                         "title": "Raycaster Engine",
                         "description": "Currently engaged in the development of a Raycasting Engine utilizing the C programming language. This project is an endeavor to enhance proficiency in the application of pointers, as well as memory management. This will further solidify understanding of these critical aspects of systems programming.",
                         "dates": "April 2024",
-                        "graphics": []
+                        "graphics": ["/resources/raycaster_demo1.gif", "/resources/raycaster_demo2.gif", "/resources/raycaster_demo3.gif"]
                     },
                     {
                         "title": "Raspberry Pi Development",
@@ -117,23 +125,27 @@
                 ]
             },
             "leadership" : {
-                "title" : "Leadership Awards",
-                "awards" : {
-                    "title": "General Motors - eDiagnostics",
-                    "description": [
-                    "Manufacturing in 2030 Award Winners.",
-                    "\"Enterprise Integration and Technology\" Finalists"
-                    ],
-                    "dates": "2023"
-                }
+                "sectionTitle" : "Leadership Awards",
+                "bulletins" : [
+                    {
+                        "title": "General Motors - eDiagnostics",
+                        "description": [
+                        "Manufacturing in 2030 Award Winners.",
+                        "Enterprise Integration and Technology Finalists"
+                        ],
+                        "dates": "2023"
+                    }
+                ]
             },
             "education" : {
-                "title": "Education",
-                "degree" : {
-                    "title" : "The University of Texas at El Paso (UTEP)",
-                    "description": "Bachelor of Science in Computer Science with a Minor in Mathematics",
-                    "dates" : "August 2017 – May 2021"
-                }
+                "sectionTitle": "Education",
+                "bulletins" : [
+                    {
+                        "title" : "The University of Texas at El Paso (UTEP)",
+                        "description": "Bachelor of Science in Computer Science with a Minor in Mathematics",
+                        "dates" : "August 2017 – May 2021"
+                    }
+                ]
             }
         }
     }

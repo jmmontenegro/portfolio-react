@@ -15,64 +15,72 @@
             }
         },
         "sections" : {
-            "misc" : {
-                "personalStatement" : {
-                    "title": "Declaración Personal" ,
-                    "content" : "Desarrollador de software experimentado, hábil en el diseño e implementación de soluciones de software robustas. Competente en varios lenguajes de programación y marcos de trabajo, con un enfoque en la creación de aplicaciones eficientes y escalables. Conocido por entregar código de alta calidad y soluciones innovadoras que cumplen con los requisitos del proyecto y superan las expectativas del cliente."
-                },
-                "keySkills" : {
-                    "title" : "Competencias laborales",
-                    "bullets": [
-                        {
-                            "main": "Competente en:",
-                            "keyPoints": [
-                                "TypeScript","Java", "Spring Boot", "Angular (13-16)",
-                                "Python",
-                                "CI/CD",
-                                "PostgreSQL",
-                                "Desarrollo Fullstack",
-                                "Desarrollo Front-end",
-                                "Desarrollo Back-end",
-                                "Desarrollo de API RESTful",
-                                "Agile"
-                            ]
-                        },
-                        {
-                            "main": "Experiencia en:",
-                            "keyPoints": [
-                                "C and C++.",
-                                "Node.js",
-                                "TFS",
-                                "Linux (Ubuntu, Kali)",
-                                "GitHub"
-                            ]
-                        }
-                    ]
-                }
+            "personalStatement" : {
+                "bulletins" : [
+                    {
+                        "title": "Declaración Personal" ,
+                        "description" : "Desarrollador de software experimentado, hábil en el diseño e implementación de soluciones de software robustas. Competente en varios lenguajes de programación y marcos de trabajo, con un enfoque en la creación de aplicaciones eficientes y escalables. Conocido por entregar código de alta calidad y soluciones innovadoras que cumplen con los requisitos del proyecto y superan las expectativas del cliente."
+                    }
+                ]
+            },
+            "keySkills" : {
+                "bulletins": [
+                    {
+                        "title" : "Competencias laborales",
+                        "bullets": [
+                            {
+                                "main": "Competente en:",
+                                "keyPoints": [
+                                    "TypeScript","Java", "Spring Boot", "Angular (13-16)",
+                                    "Python",
+                                    "CI/CD",
+                                    "PostgreSQL",
+                                    "Desarrollo Fullstack",
+                                    "Desarrollo Front-end",
+                                    "Desarrollo Back-end",
+                                    "Desarrollo de API RESTful",
+                                    "Agile"
+                                ]
+                            },
+                            {
+                                "main": "Experiencia en:",
+                                "keyPoints": [
+                                    "C and C++.",
+                                    "Node.js",
+                                    "TFS",
+                                    "Linux (Ubuntu, Kali)",
+                                    "GitHub"
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             "experience" : {
-                "title" : "Experiencia",
-                "experiences" : { 
-                    "title" : "General Motors - Desarrollador de Software",
-                    "description" : [
-                        "Llevé a cabo una investigación en profundidad y desarrolló soluciones para un equipo de generación de imágenes sintéticas.",
-                        "Produje datos realistas para mejorar los modelos de visión artificial de IA.",
-                        "Investigué, diseñé e implementé soluciones de diagnóstico para defectos de vehículos.",
-                        "Aproveché un backend de Spring Boot para crear API RESTful.",
-                        "Desarrollé un frontend dinámico de Angular (TypeScript) para la interacción del usuario.",
-                        "Utilicé bases de datos PostgreSQL para el almacenamiento y recuperación de datos."
-                    ],
-                    "dates" : "Julio 2021 – Febrero 2024"
-                }
+                "sectionTitle" : "Experiencia",
+                "bulletins" : [
+                    { 
+                        "title" : "General Motors - Desarrollador de Software",
+                        "description" : [
+                            "Llevé a cabo una investigación en profundidad y desarrolló soluciones para un equipo de generación de imágenes sintéticas.",
+                            "Produje datos realistas para mejorar los modelos de visión artificial de IA.",
+                            "Investigué, diseñé e implementé soluciones de diagnóstico para defectos de vehículos.",
+                            "Aproveché un backend de Spring Boot para crear API RESTful.",
+                            "Desarrollé un frontend dinámico de Angular (TypeScript) para la interacción del usuario.",
+                            "Utilicé bases de datos PostgreSQL para el almacenamiento y recuperación de datos."
+                        ],
+                        "dates" : "Julio 2021 – Febrero 2024"
+                    }
+                ]
             },
             "project" : {
-                "title": "Proyectos",
-                "projects" : [
+                "sectionTitle": "Proyectos",
+                "bulletins" : [
                     {
                         "title": "Motor Raycaster",
                         "description": "Actualmente estoy involucrado en el desarrollo de un motor de raycasting utilizando el lenguaje de programación C. Este proyecto es un esfuerzo para mejorar la competencia en la aplicación de punteros, así como la gestión de la memoria. Esto solidificará aún más la comprensión de estos aspectos críticos de la programación de sistemas.",
                         "dates": "Abril 2024",
-                        "graphics": []
+                        "graphics": ["/resources/raycaster_demo1.gif", "/resources/raycaster_demo2.gif", "/resources/raycaster_demo3.gif"]
                     },
                     {
                         "title": "Desarrollo de Raspberry Pi",
@@ -117,23 +125,27 @@
                 ]
             },
             "leadership" : {
-                "title" : "Premios al Liderazgo",
-                "awards" : {
-                    "title": "General Motors - eDiagnostics",
-                    "description": [
-                    "Premiados en \"Manufacturing in 2030\"",
-                    "Finalistas de \"Enterprise Integration and Technology\""
-                    ],
-                    "dates": "2023"
-                }
+                "sectionTitle" : "Premios al Liderazgo",
+                "bulletins" : [
+                    {
+                        "title": "General Motors - eDiagnostics",
+                        "description": [
+                        "Premiados en \"Manufacturing in 2030\"",
+                        "Finalistas de \"Enterprise Integration and Technology\""
+                        ],
+                        "dates": "2023"
+                    }
+                ]
             },
             "education" : {
-                "title": "Educación",
-                "degree": {
-                    "title" : "The University of Texas at El Paso (UTEP)",
-                    "description": "Licenciatura en Ciencias de la Computación con especialización en Matemáticas",
-                    "dates" : "Agosto 2017 – Mayo 2021"
-                }
+                "sectionTitle": "Educación",
+                "bulletins": [
+                    {
+                        "title" : "The University of Texas at El Paso (UTEP)",
+                        "description": "Licenciatura en Ciencias de la Computación con especialización en Matemáticas",
+                        "dates" : "Agosto 2017 – Mayo 2021"
+                    }
+                ]
             }
         }
     }
