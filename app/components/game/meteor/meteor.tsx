@@ -25,7 +25,7 @@ const getRandomPosition = () => {
 };
 
 // Function to generate a direction towards the center of the screen
-const getDirectionToCenter = (x, y) => {
+const getDirectionToCenter = (x: number, y: number) => {
     const dx = (window.innerWidth / 2 - x) / window.innerWidth;
     const dy = (window.innerHeight / 2 - y) / window.innerHeight;
     return { dx, dy };
@@ -38,8 +38,8 @@ const MovingDiv = ({ id, x, y, dx, dy, onRemove, mousePosition } : { id: number,
     useEffect(() => {
         const interval = setInterval(() => {
             const newPosition = {
-                x: position.x + dx * (3 + Math.random() * 30), // Adjust speed as needed
-                y: position.y + dy * (3 + Math.random() * 30)
+                x: position.x + dx * (5 + Math.random() * 10), // Adjust speed as needed
+                y: position.y + dy * (5 + Math.random() * 10)
             };
 
             setPosition(newPosition);
@@ -100,12 +100,12 @@ export default function GetMeteors(): ReactElement {
                 const direction = getDirectionToCenter(position.x, position.y);
                 setDivs(prevDivs => [...prevDivs, { id: Math.random(), ...position, ...direction }]);
 
-                setIntervalTime(prevTime => Math.max(50, prevTime - 5));
+                setIntervalTime(prevTime => Math.max(50, prevTime - 1));
             }, intervalTime);
 
             return () => clearInterval(interval);
-        }, 5000); // delay of 5 seconds
-        return () => clearInterval(intervalTime);
+        }, 4000); // delay of 5 seconds
+        return () => clearTimeout(timeout);
     }, [intervalTime]); // Add intervalTime as a dependency
 
     useEffect(() => {
