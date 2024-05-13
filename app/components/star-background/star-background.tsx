@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import throttle from "lodash/throttle";
 
-export default function StarBackground() {
+export default function StarBackground(): React.ReactElement {
     const [stars, setStars] = useState<{ top: number; left: number; scale: number }[]>(() => 
         Array(200).fill(null).map(_ => {
             const top = Math.random() * 100;

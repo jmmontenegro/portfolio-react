@@ -1,10 +1,10 @@
 "use client";
 
-import React, { ReactElement, useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import rocket from "../../../resources/rocket.png";
 import Image from "next/image";
 
-export default function MouseFollower(): ReactElement {
+export default function MouseFollower(): React.ReactElement {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [rotation, setRotation] = useState(0);
     const prevPosition = useRef({ x: 0, y: 0 });

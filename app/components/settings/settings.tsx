@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactElement, ReactNode, createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { GetDropDownMenu } from "../dropdown/dropdown";
 import styles from "./settings.module.css";
 import en from "../../resources/languages/en.json";
@@ -17,7 +17,7 @@ export const defaultSettings = {
 
 export const SettingsContext = createContext(defaultSettings);
 
-export function SettingsProvider({ children }: { children: ReactNode }) {
+export function SettingsProvider({ children }: { children: React.ReactNode }): React.ReactElement {
   const [isEnabled, setIsEnabled] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [isRunningGame, runGame] = useState(false);
@@ -37,7 +37,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function GetSettings(): ReactElement {
+export function GetSettings(): React.ReactElement {
 
   const data = GetLanguage();
   let title:string = "", 

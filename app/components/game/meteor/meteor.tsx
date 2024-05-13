@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactElement, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SettingsContext } from "../../settings/settings";
 import MouseFollower from "../mouse-follower/mouse-follower";
 import Image from "next/image";
@@ -88,7 +88,7 @@ type Div = {
     dy: number;
   };
 
-export default function GetMeteors(): ReactElement {
+export default function GetMeteors(): React.ReactElement {
     const [divs, setDivs] = useState<Div[]>([]);
     const [intervalTime, setIntervalTime] = useState(300); // Initialize interval time to 300
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
