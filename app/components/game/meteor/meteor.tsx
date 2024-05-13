@@ -32,15 +32,15 @@ const getRandomDirection = () => {
     return { dx, dy };
 };
 
-const MovingDiv = ({ id, x, y, dx, dy, onRemove } : { id: number, x: number, y: number, dx: number, dy: number, onRemove: (id: number) => void }) => {
+const MovingDiv = ({ id, x, y, dx, dy, onRemove, mousePosition } : { id: number, x: number, y: number, dx: number, dy: number, onRemove: (id: number) => void, mousePosition: { x: number, y: number } }) => {
     const [position, setPosition] = useState({ x, y });
     const { setGameState } = useContext(SettingsContext);
 
     useEffect(() => {
         const interval = setInterval(() => {
             const newPosition = {
-                x: position.x + dx * (5 + Math.random() * 15), // Adjust speed as needed
-                y: position.y + dy * (5 + Math.random() * 15)
+                x: position.x + dx * (3 + Math.random() * 20), // Adjust speed as needed
+                y: position.y + dy * (3 + Math.random() * 20)
             };
 
             setPosition(newPosition);
@@ -50,31 +50,34 @@ const MovingDiv = ({ id, x, y, dx, dy, onRemove } : { id: number, x: number, y: 
                 clearInterval(interval);
                 onRemove(id); // Remove the div
             }
-        }, 30);
+        }, 10);
 
         return () => clearInterval(interval);
     }, [dx, dy, id, onRemove, position]);
 
     useEffect(() => {
-        const handleMouseMove = (event: MouseEvent) => {
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
-
-            // Check if the mouse position matches the div's position
-            if (Math.abs(mouseX - position.x) < 50 && Math.abs(mouseY - position.y) < 50) {
+        const handleCollision = () => {
+            // Check if the mouse position is within the image bounds
+            if (mousePosition.x >= position.x && mousePosition.x <= position.x + 60 &&
+                mousePosition.y >= position.y && mousePosition.y <= position.y + 60) {
                 setGameState();
             }
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
+        const interval = setInterval(handleCollision, 10);
 
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, [position, setGameState]);
+        return () => clearInterval(interval);
+    }, [mousePosition, position, setGameState]);
 
     return (
-        <Image src={meteor} alt={""} style={{ position: 'absolute', top: position.y, left: position.x, width: 50, height: 50 }}/>
+        <Image src={meteor} alt={""} style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            transform: `translate(${position.x}px, ${position.y}px)`, 
+            width: 50, 
+            height: 50 
+        }}/>
     );
 };
 
@@ -89,6 +92,7 @@ type Div = {
 export default function GetMeteors(): ReactElement {
     const [divs, setDivs] = useState<Div[]>([]);
     const [intervalTime, setIntervalTime] = useState(300); // Initialize interval time to 300
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -102,6 +106,18 @@ export default function GetMeteors(): ReactElement {
         return () => clearInterval(interval);
     }, [intervalTime]); // Add intervalTime as a dependency
 
+    useEffect(() => {
+        const handleMouseMove = (event: MouseEvent) => {
+            setMousePosition({ x: event.clientX, y: event.clientY });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
+
     const handleRemove = (id:number) => {
         setDivs(prevDivs => prevDivs.filter(div => div.id !== id));
     };
@@ -109,7 +125,7 @@ export default function GetMeteors(): ReactElement {
     return (
         <div>
             {divs.map((props) => (
-                <MovingDiv key={props.id} {...props} onRemove={handleRemove} />
+                <MovingDiv key={props.id} {...props} onRemove={handleRemove} mousePosition={mousePosition} />
             ))}
             <MouseFollower divs={divs} />
         </div>
