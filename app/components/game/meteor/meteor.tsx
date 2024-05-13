@@ -94,15 +94,18 @@ export default function GetMeteors(): ReactElement {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            const position = getRandomPosition();
-            const direction = getDirectionToCenter(position.x, position.y);
-            setDivs(prevDivs => [...prevDivs, { id: Math.random(), ...position, ...direction }]);
+        const timeout = setTimeout(() => {
+            const interval = setInterval(() => {
+                const position = getRandomPosition();
+                const direction = getDirectionToCenter(position.x, position.y);
+                setDivs(prevDivs => [...prevDivs, { id: Math.random(), ...position, ...direction }]);
 
-            setIntervalTime(prevTime => Math.max(50, prevTime - 5));
-        }, intervalTime);
+                setIntervalTime(prevTime => Math.max(50, prevTime - 5));
+            }, intervalTime);
 
-        return () => clearInterval(interval);
+            return () => clearInterval(interval);
+        }, 5000); // delay of 5 seconds
+        return () => clearInterval(intervalTime);
     }, [intervalTime]); // Add intervalTime as a dependency
 
     useEffect(() => {
