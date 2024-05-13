@@ -64,7 +64,7 @@ export function GetSettings(): ReactElement {
   <div className={styles.settings}>
     <button className={styles.toggleButton} onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
     <GetDropDownMenu onChange={handleDropdownChange} title={title} items={items}/>
-    {/* {IsBackgroundEnabled() && <button className={styles.toggleButton} onClick={setGameState}>Play Game</button>} */}
+    {IsBackgroundEnabled() && <button className={styles.toggleButton} onClick={setGameState}>Play Game</button>}
   </div>
   );
 }

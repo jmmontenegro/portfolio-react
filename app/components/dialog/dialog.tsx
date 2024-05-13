@@ -18,7 +18,7 @@ export default function GetDialog(data: dialogData): ReactElement {
     };
 
     return (
-        <div>
+      <>
         {isDialogOpen && (
           <div className={styles.dialogBoxShadow}>
             <div className={styles.dialogBox}>
@@ -33,6 +33,6 @@ export default function GetDialog(data: dialogData): ReactElement {
         <a className={styles.dialogButton} onClick={handleClick}>
           <FontAwesomeIcon className={styles.rotateIcon} icon={data.buttonIcon} size={data.iconSize}/>
         </a>
-    </div>
+    </>
     );
   }

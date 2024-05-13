@@ -3,6 +3,8 @@
 import { ReactElement, useContext, useEffect, useState } from "react";
 import { SettingsContext } from "../../settings/settings";
 import MouseFollower from "../mouse-follower/mouse-follower";
+import Image from "next/image";
+import meteor from "../../../resources/meteor.png";
 
 // Function to generate a random position outside the window
 const getRandomPosition = () => {
@@ -37,8 +39,8 @@ const MovingDiv = ({ id, x, y, dx, dy, onRemove } : { id: number, x: number, y: 
     useEffect(() => {
         const interval = setInterval(() => {
             const newPosition = {
-                x: position.x + dx * Math.max(5, Math.random() * 10), // Adjust speed as needed
-                y: position.y + dy * Math.max(5, Math.random() * 10)
+                x: position.x + dx * (5 + Math.random() * 15), // Adjust speed as needed
+                y: position.y + dy * (5 + Math.random() * 15)
             };
 
             setPosition(newPosition);
@@ -72,7 +74,7 @@ const MovingDiv = ({ id, x, y, dx, dy, onRemove } : { id: number, x: number, y: 
     }, [position, setGameState]);
 
     return (
-        <div style={{ position: 'absolute', top: position.y, left: position.x, width: 50, height: 50, backgroundColor: 'rgb(60, 60, 60)' }} />
+        <Image src={meteor} alt={""} style={{ position: 'absolute', top: position.y, left: position.x, width: 50, height: 50 }}/>
     );
 };
 
