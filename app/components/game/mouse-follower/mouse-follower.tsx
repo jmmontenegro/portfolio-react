@@ -32,17 +32,20 @@ export default function MouseFollower(): React.ReactElement {
         targetPosition.current = newPosition;
         targetRotation.current = newAngle;
     };
+    
     useEffect(() => {
         const animate = () => {
             setPosition(prevPosition => ({
                 x: lerp(prevPosition.x, targetPosition.current.x, 0.1),
                 y: lerp(prevPosition.y, targetPosition.current.y, 0.1)
             }));
-            setRotation(prevRotation => lerp(prevRotation, targetRotation.current, 0.1));
+            // Increase the value of 't' in the lerp function to make rotation quicker
+            setRotation(prevRotation => lerp(prevRotation, targetRotation.current, 0.2));
             requestAnimationFrame(animate);
         };
         animate();
     }, []);
+    
 
     const imageWidth = 50;
     const imageHeight = 50;
