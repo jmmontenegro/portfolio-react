@@ -24,7 +24,7 @@ export default function StarBackground() {
             // This is a mouse event
             mousePositionRef.current = { x: e.clientX, y: e.clientY };
         }
-    }, 100), []);
+    }, 50), []);
 
     useEffect(() => {
         window.addEventListener('mousemove', moveHandler);
