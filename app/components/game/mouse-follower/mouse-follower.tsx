@@ -10,6 +10,10 @@ export default function MouseFollower(divs:any): ReactElement {
     const [rotation, setRotation] = useState(0);
     const prevPosition = useRef({ x: 0, y: 0 });
 
+    const lerp = (start, end, t) => {
+        return start * (1 - t) + end * t;
+    };
+
     const handleMouseMove = throttle((event:React.MouseEvent) => {
         const newPosition = {
             x: event.clientX,
@@ -21,8 +25,11 @@ export default function MouseFollower(divs:any): ReactElement {
         const dy = newPosition.y - prevPosition.current.y;
         const angle = Math.atan2(dy, dx) * 180 / Math.PI + 90; // Add 90 to rotate the image so that the top points towards the cursor
 
-        // Update the state
-        setPosition(newPosition);
+        // Update the state with lerp
+        setPosition(prevPosition => ({
+            x: lerp(prevPosition.x, newPosition.x, 0.1),
+            y: lerp(prevPosition.y, newPosition.y, 0.1)
+        }));
         setRotation(angle);
 
         // Store the current position for the next mouse move event
