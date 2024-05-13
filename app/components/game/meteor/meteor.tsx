@@ -129,7 +129,7 @@ export default function GetMeteors(): ReactElement {
             {divs.map((props) => (
                 <MovingDiv key={props.id} {...props} onRemove={handleRemove} mousePosition={mousePosition} />
             ))}
-            <MouseFollower divs={divs} />
+            <MouseFollower/>
         </div>
     );
 }
