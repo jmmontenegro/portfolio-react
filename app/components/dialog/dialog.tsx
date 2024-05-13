@@ -2,11 +2,11 @@
 
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ReactElement, useState } from "react";
+import { useState } from "react";
 import styles from "./dialog.module.css";
 import dialogData from "./dialog.data";
 
-export default function GetDialog(data: dialogData): ReactElement {
+export default function GetDialog(data: dialogData): React.ReactElement {
     const [isDialogOpen, setDialogOpen] = useState(false);
 
     const handleClick = () => {
