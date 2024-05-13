@@ -1,10 +1,10 @@
 "use client";
 
-import { ReactElement, useState } from "react";
+import { useState } from "react";
 import dropDownData from "./dropdown.data";
 import styles from "./dropdown.module.css";
 
-export function GetDropDownMenu(data: dropDownData): ReactElement {
+export function GetDropDownMenu(data: dropDownData): React.ReactElement {
 
     const [selectedOption, setSelectedOption] = useState('');
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

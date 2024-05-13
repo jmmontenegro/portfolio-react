@@ -113,27 +113,29 @@
   .email:hover {
     background-color: unset;
   }
+}
 
-  .settingsButton {
-    margin: auto;
+@media (max-height: 800px) {
+
+  .resume {
+    /* padding-right: 15px; */
+    grid-gap: 60px;
+    max-height: 68vh;
+    min-height: 45vh;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-height: 700px) {
 
   .resume {
-    padding-right: 15px;
+    /* padding-right: 15px; */
     grid-gap: 60px;
     max-height: 60vh;
     min-height: 45vh;
   }
-}
 
-@media (max-width: 800px) {
-  .resume {
-    padding-right: 15px;
-    grid-gap: 60px;
-    max-height: 70vh;
-    min-height: 45vh;
+  .settingsButton {
+    margin-left: auto;
+    margin-right: auto;
   }
 }

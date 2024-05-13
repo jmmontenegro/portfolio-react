@@ -72,7 +72,7 @@ function getGraphics(graphics:StaticImageData[] | undefined): React.ReactElement
     <div className={styles.gallery}>
     {
       graphics.map((graphic, index) => (
-        <Image key={index} className={styles.graphic} src={graphic} alt={''} height={200} width={200}/>
+        <Image key={index} className={styles.graphic} src={graphic} alt={''} height={200} width={200} unoptimized/>
       ))
     }
     </div>
