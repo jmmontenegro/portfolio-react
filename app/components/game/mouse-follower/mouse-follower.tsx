@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import rocket from "../../../resources/rocket.png";
 import Image from "next/image";
-import throttle from "lodash/throttle"; // Make sure to install lodash and import throttle
+import throttle from "lodash/throttle";
 
 export default function MouseFollower(): React.ReactElement {
     const [position, setPosition] = useState({ x: 0, y: 0 });
