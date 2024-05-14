@@ -45,7 +45,8 @@ export function GetSettings({ dialog }: { dialog: ReturnType<typeof UseDialog> }
   items:string[] = [],
   enable:string = "",
   disable:string = "",
-  background:string = "";
+  background:string = "",
+  playGame:string = "";
 
   data.map(json => {
     title = json.dialogs.settings.languageSelect;
@@ -53,6 +54,7 @@ export function GetSettings({ dialog }: { dialog: ReturnType<typeof UseDialog> }
     enable = json.dialogs.settings.enable;
     disable = json.dialogs.settings.disable;
     background = json.dialogs.settings.background;
+    playGame = json.dialogs.settings.playGame;
   });
 
   const { isEnabled, toggleDisplay, selectedOption, setSelectedOption, isRunningGame, setGameState} = useContext(SettingsContext);
@@ -70,7 +72,7 @@ export function GetSettings({ dialog }: { dialog: ReturnType<typeof UseDialog> }
     <div className={styles.settings}>
       <button className={styles.toggleButton} onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
       <GetDropDownMenu onChange={handleDropdownChange} title={title} items={items}/>
-      {IsBackgroundEnabled() && <button className={styles.toggleButton} onClick={newSetGameState}>Play Game</button>}
+      {IsBackgroundEnabled() && <button className={styles.toggleButton} onClick={newSetGameState}>{playGame}</button>}
     </div>
   );
 }

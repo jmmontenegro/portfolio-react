@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useState, useRef, useCallback } from "react";
-import { SettingsContext } from "../../settings/settings";
+import { GetLanguage, SettingsContext } from "../../settings/settings";
 import MouseFollower from "../mouse-follower/mouse-follower";
 import meteor from "../../../resources/meteor.png";
 import { Dialog, UseDialog, getDefaultDialogData } from "../../dialog/dialog";
@@ -37,9 +37,12 @@ export default function GetMeteors(): React.ReactElement {
     const [collisionDetected, setCollisionDetected] = useState(false);
     const [seconds, setSeconds] = useState(0);
     const [survivalTime, setSurvivalTime] = useState(0);
+    const language = GetLanguage();
 
-    data.title = "Collision"
-    data.content = <div>You survived {survivalTime} seconds </div>
+    language.map(json => {
+        data.title = json.dialogs.game.title;
+        data.content = <div>{json.dialogs.game.content.replace("{survivalTime}", survivalTime.toString())}</div>
+    });
 
     const handleCollision = useCallback(() => {
         setCollisionDetected(true);

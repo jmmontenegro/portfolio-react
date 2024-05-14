@@ -1,6 +1,6 @@
 self.onmessage = function(event) {
     const { stars, mousePosition, windowDimensions } = event.data;
-    const scaleConstant = 25000;
+    const scaleConstant = 5000;
     const starElements = stars.map((star: { top: number; left: number; scale: number }) => {
         const starPositionX = windowDimensions.width * star.left / 100;
         const starPositionY = windowDimensions.height * star.top / 100;

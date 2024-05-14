@@ -11,7 +11,12 @@
                 "languages" : ["English", "Spanish"],
                 "enable" : "Enable",
                 "disable" : "Disable",
-                "background" : "background"
+                "background" : "background",
+                "playGame" : "Play Game"
+            },
+            "game": {
+                "title" : "Game Over!",
+                "content" : "You survived {survivalTime} seconds!" 
             }
         },
         "sections" : {
