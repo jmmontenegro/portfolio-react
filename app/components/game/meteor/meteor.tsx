@@ -28,7 +28,7 @@ const getDirectionToCenter = (x: number, y: number) => {
 
 export default function GetMeteors(): React.ReactElement {
     const [meteors, setMeteors] = useState<{ id: number; x: number; y: number; dx: number; dy: number }[]>([]);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const mousePosition = useRef({ x: 0, y: 0 });
     const { setGameState } = useContext(SettingsContext);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const imgSize:number = 50;
@@ -115,7 +115,7 @@ export default function GetMeteors(): React.ReactElement {
                         ctx.drawImage(img, meteor.x - imgSize, meteor.y - imgSize, imgSize, imgSize);
     
                         // Collision detection
-                        if (Math.hypot(meteor.x - mousePosition.x, meteor.y - mousePosition.y) < imgSize) {
+                        if (Math.hypot(meteor.x - mousePosition.current.x, meteor.y - mousePosition.current.y) < imgSize) {
                             handleCollision();
                             setSurvivalTime(seconds);
                         }
@@ -142,7 +142,7 @@ export default function GetMeteors(): React.ReactElement {
 
     useEffect(() => {
         const handleMouseMove = (event: MouseEvent) => {
-            setMousePosition({ x: event.clientX, y: event.clientY });
+            mousePosition.current = { x: event.clientX, y: event.clientY };
         };
 
         window.addEventListener('mousemove', handleMouseMove);
