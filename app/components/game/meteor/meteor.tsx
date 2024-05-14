@@ -5,6 +5,7 @@ import { GetLanguage, SettingsContext } from "../../settings/settings";
 import MouseFollower from "../mouse-follower/mouse-follower";
 import meteor from "../../../resources/meteor.png";
 import { Dialog, UseDialog, getDefaultDialogData } from "../../dialog/dialog";
+import { throttle } from "lodash";
 
 const getRandomPosition = () => {
     let x, y;
@@ -141,12 +142,15 @@ export default function GetMeteors(): React.ReactElement {
     }, []);
 
     useEffect(() => {
-        const handleMouseMove = (event: MouseEvent) => {
+        const handleMouseMove = throttle((event: MouseEvent) => {
             mousePosition.current = { x: event.clientX, y: event.clientY };
-        };
-
+        }, 200); // Throttle the function to only be called once every 200ms
+    
         window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        return () => {
+            handleMouseMove.cancel(); // Cancel any trailing throttled calls
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
     }, []);
 
     return (
