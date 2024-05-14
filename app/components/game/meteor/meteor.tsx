@@ -4,6 +4,7 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { SettingsContext } from "../../settings/settings";
 import MouseFollower from "../mouse-follower/mouse-follower";
 import meteor from "../../../resources/meteor.png";
+import { Dialog, UseDialog, getDefaultDialogData } from "../../dialog/dialog";
 
 const getRandomPosition = () => {
     let x, y;
@@ -31,6 +32,43 @@ export default function GetMeteors(): React.ReactElement {
     const { setGameState } = useContext(SettingsContext);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const imgSize:number = 50;
+    const dialog = UseDialog(() => setGameState());
+    const data = getDefaultDialogData();
+    const [collisionDetected, setCollisionDetected] = useState(false);
+    const [seconds, setSeconds] = useState(0);
+    const [survivalTime, setSurvivalTime] = useState(0);
+
+    data.title = "Collision"
+    data.content = <div>You survived {survivalTime} seconds </div>
+
+    const handleCollision = () => {
+        setCollisionDetected(true);
+        dialog.handleOpen();
+    }
+
+    useEffect(() => {
+        if (collisionDetected) {
+            setSeconds(0);
+        }
+    }, [collisionDetected]);
+
+    useEffect(() => {
+        let interval: NodeJS.Timeout | null = null;
+      
+        if (!collisionDetected && meteors.length > 0) {
+          interval = setInterval(() => {
+            setSeconds(seconds => seconds + 1);
+          }, 1000);
+        } else if (collisionDetected && interval) {
+          clearInterval(interval);
+        }
+      
+        return () => {
+          if (interval) {
+            clearInterval(interval);
+          }
+        };
+      }, [collisionDetected, meteors]);   
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -39,6 +77,11 @@ export default function GetMeteors(): React.ReactElement {
                 const direction = getDirectionToCenter(position.x, position.y);
                 setMeteors(prevMeteors => [...prevMeteors, { id: Math.random(), ...position, ...direction }]);
             }, 300);
+
+            const timer = setInterval(() => {
+                setSeconds(seconds => seconds + 1);
+            }, 1000);
+
             return () => clearInterval(interval);
         }, 5000); // Delay of 5 seconds
 
@@ -70,7 +113,8 @@ export default function GetMeteors(): React.ReactElement {
     
                         // Collision detection
                         if (Math.hypot(meteor.x - mousePosition.x, meteor.y - mousePosition.y) < imgSize) {
-                            setGameState();
+                            handleCollision();
+                            setSurvivalTime(seconds);
                         }
                     });
                 }); // Adjust this value to change the speed of the meteors
@@ -78,9 +122,8 @@ export default function GetMeteors(): React.ReactElement {
                 return () => clearInterval(interval);
             }
         }
-    }, [meteors, setGameState]); // Removed mousePosition from the dependency array
+    }, [meteors, setGameState]);
     
-
     useEffect(() => {
         const handleResize = () => {
             const canvas = canvasRef.current;
@@ -105,8 +148,15 @@ export default function GetMeteors(): React.ReactElement {
 
     return (
         <>
-            <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0 }} />
-            <MouseFollower/>
+            { 
+                !collisionDetected ? 
+                <>
+                    <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0 }} />
+                    <MouseFollower/>
+                </>
+                :
+                <Dialog data={data} isOpen={dialog.isOpen} onClose={dialog.handleClose}/> 
+            }
         </>
     );
 };

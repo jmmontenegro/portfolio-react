@@ -5,6 +5,7 @@ import { GetDropDownMenu } from "../dropdown/dropdown";
 import styles from "./settings.module.css";
 import en from "../../resources/languages/en.json";
 import es from "../../resources/languages/es.json";
+import { UseDialog } from "../dialog/dialog";
 
 export const defaultSettings = {
   isEnabled: false,
@@ -37,7 +38,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }): R
   );
 }
 
-export function GetSettings(): React.ReactElement {
+export function GetSettings({ dialog }: { dialog: ReturnType<typeof UseDialog> }): React.ReactElement {
 
   const data = GetLanguage();
   let title:string = "", 
@@ -59,13 +60,18 @@ export function GetSettings(): React.ReactElement {
   const handleDropdownChange = (selectedOption:string) => {
       setSelectedOption(selectedOption);
   };
+
+  const newSetGameState = () => {
+    dialog.handleClose();
+    setGameState();
+  };
   
   return (
-  <div className={styles.settings}>
-    <button className={styles.toggleButton} onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
-    <GetDropDownMenu onChange={handleDropdownChange} title={title} items={items}/>
-    {IsBackgroundEnabled() && <button className={styles.toggleButton} onClick={setGameState}>Play Game</button>}
-  </div>
+    <div className={styles.settings}>
+      <button className={styles.toggleButton} onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
+      <GetDropDownMenu onChange={handleDropdownChange} title={title} items={items}/>
+      {IsBackgroundEnabled() && <button className={styles.toggleButton} onClick={newSetGameState}>Play Game</button>}
+    </div>
   );
 }
 
