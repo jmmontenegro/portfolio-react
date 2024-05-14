@@ -13,5 +13,4 @@ self.onmessage = function(event) {
     self.postMessage(starElements);
 };
 
-
 export {};
