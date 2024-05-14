@@ -11,7 +11,12 @@
                 "languages" : ["Español", "Inglés"],
                 "enable" : "Habilitar",
                 "disable" : "Desactivar",
-                "background" : "el fondo"
+                "background" : "el fondo",
+                "playGame" : "Iniciar el juego"
+            },
+            "game": {
+                "title" : "¡Fin!",
+                "content" : "¡Sobreviviste {survivalTime} segundos!" 
             }
         },
         "sections" : {

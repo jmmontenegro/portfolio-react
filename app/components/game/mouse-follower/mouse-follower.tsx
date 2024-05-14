@@ -1,40 +1,63 @@
 "use client";
 
-import React, { ReactElement, useRef, useState } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import rocket from "../../../resources/rocket.png";
 import Image from "next/image";
-import { throttle } from "lodash";
+import throttle from "lodash/throttle";
 
-export default function MouseFollower(divs:any): ReactElement {
+export default function MouseFollower(): React.ReactElement {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [rotation, setRotation] = useState(0);
-    const prevPosition = useRef({ x: 0, y: 0 });
+    const targetPosition = useRef({ x: 0, y: 0 });
+    const targetRotation = useRef(0);
 
-    const handleMouseMove = throttle((event:React.MouseEvent) => {
-        const newPosition = {
-            x: event.clientX,
-            y: event.clientY
+    const lerp = (start: number, end: number, t: number) => {
+        return start * (1 - t) + end * t;
+    };
+
+    const throttledFunction = throttle((clientX: number, clientY: number) => {
+        const newPosition = { x: clientX, y: clientY };
+        const dx = newPosition.x - position.x;
+        const dy = newPosition.y - position.y;
+        let newAngle = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+    
+        if (Math.abs(newAngle - rotation) > 180) {
+            newAngle = newAngle > rotation ? newAngle - 360 : newAngle + 360;
+        }
+    
+        targetPosition.current = newPosition;
+        targetRotation.current = newAngle;
+    }, 100);
+    
+    const throttledHandler = useCallback(throttledFunction, [throttledFunction]);      
+    
+    const handleMouseMove = (event: React.MouseEvent) => {
+        throttledHandler(event.clientX, event.clientY);
+    };
+    
+    const handleTouchMove = (event: React.TouchEvent) => {
+        event.preventDefault();
+        throttledHandler(event.touches[0].clientX, event.touches[0].clientY);
+    };
+
+    useEffect(() => {
+        const animate = () => {
+            setPosition(prevPosition => ({
+                x: lerp(prevPosition.x, targetPosition.current.x, 0.1),
+                y: lerp(prevPosition.y, targetPosition.current.y, 0.1)
+            }));
+            setRotation(prevRotation => lerp(prevRotation, targetRotation.current, 0.2));
+            requestAnimationFrame(animate);
         };
-
-        // Calculate the angle of rotation
-        const dx = newPosition.x - prevPosition.current.x;
-        const dy = newPosition.y - prevPosition.current.y;
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI + 90; // Add 90 to rotate the image so that the top points towards the cursor
-
-        // Update the state
-        setPosition(newPosition);
-        setRotation(angle);
-
-        // Store the current position for the next mouse move event
-        prevPosition.current = newPosition;
-    }, 50); // Adjust this value as needed
+        animate();
+    }, []);
 
     const imageWidth = 50;
     const imageHeight = 50;
 
     return (
-        <div style={{ cursor: 'none', position: 'fixed', top: 0, bottom: 0, left: 0, right: 0 }} onMouseMove={handleMouseMove}>
-            <Image src={rocket} alt={''} height={imageHeight} width={imageWidth} style={{ position: 'fixed', top: position.y - imageHeight / 2, left: position.x - imageWidth / 2, transform: `rotate(${rotation}deg)`, transformOrigin: 'center top' }}/>
+        <div style={{ cursor: 'none', position: 'fixed', top: 0, bottom: 0, left: 0, right: 0, touchAction: 'none' }} onMouseMove={handleMouseMove} onTouchMove={handleTouchMove}>
+            <Image src={rocket} alt={''} height={imageHeight} width={imageWidth} style={{ position: 'fixed', top: position.y - imageHeight / 2, left: position.x - imageWidth / 2, transform: `rotate(${rotation}deg)`, transformOrigin: 'center center' }}/>
         </div>
     );
 };

@@ -1,20 +1,19 @@
 "use client";
 
-import { ReactElement, useContext, useEffect, useState } from "react";
-import { SettingsContext } from "../../settings/settings";
+import { useContext, useEffect, useState, useRef, useCallback } from "react";
+import { GetLanguage, SettingsContext } from "../../settings/settings";
 import MouseFollower from "../mouse-follower/mouse-follower";
+import meteor from "../../../resources/meteor.png";
+import { Dialog, UseDialog, getDefaultDialogData } from "../../dialog/dialog";
+import { throttle } from "lodash";
 
-// Function to generate a random position outside the window
 const getRandomPosition = () => {
     let x, y;
 
-    // Randomly decide whether the div starts from the top/bottom or left/right
     if (Math.random() < 0.5) {
-        // Start from top/bottom
         x = Math.random() * window.innerWidth;
         y = Math.random() < 0.5 ? 0 : window.innerHeight ;
     } else {
-        // Start from left/right
         x = Math.random() < 0.5 ? 0 : window.innerWidth ;
         y = Math.random() * window.innerHeight;
     }
@@ -22,94 +21,149 @@ const getRandomPosition = () => {
     return { x, y };
 };
 
-// Function to generate a random direction
-const getRandomDirection = () => {
-    const angle = Math.random() * 2 * Math.PI; // Random angle in radians
-    const dx = Math.cos(angle);
-    const dy = Math.sin(angle);
+const getDirectionToCenter = (x: number, y: number) => {
+    const dx = (window.innerWidth / 2 - x) / window.innerWidth;
+    const dy = (window.innerHeight / 2 - y) / window.innerHeight;
     return { dx, dy };
 };
 
-const MovingDiv = ({ id, x, y, dx, dy, onRemove } : { id: number, x: number, y: number, dx: number, dy: number, onRemove: (id: number) => void }) => {
-    const [position, setPosition] = useState({ x, y });
+export default function GetMeteors(): React.ReactElement {
+    const [meteors, setMeteors] = useState<{ id: number; x: number; y: number; dx: number; dy: number }[]>([]);
+    const mousePosition = useRef({ x: 0, y: 0 });
     const { setGameState } = useContext(SettingsContext);
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
+    const imgSize:number = 50;
+    const dialog = UseDialog(() => setGameState());
+    const data = getDefaultDialogData();
+    const [collisionDetected, setCollisionDetected] = useState(false);
+    const [seconds, setSeconds] = useState(0);
+    const [survivalTime, setSurvivalTime] = useState(0);
+    const language = GetLanguage();
+
+    language.map(json => {
+        data.title = json.dialogs.game.title;
+        data.content = <div>{json.dialogs.game.content.replace("{survivalTime}", survivalTime.toString())}</div>
+    });
+
+    const handleCollision = useCallback(() => {
+        setCollisionDetected(true);
+        dialog.handleOpen();
+      }, [setCollisionDetected, dialog]);
+      
+    useEffect(() => {
+        if (collisionDetected) {
+            setSeconds(0);
+        }
+    }, [collisionDetected]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            const newPosition = {
-                x: position.x + dx * Math.max(5, Math.random() * 10), // Adjust speed as needed
-                y: position.y + dy * Math.max(5, Math.random() * 10)
-            };
+        let interval: NodeJS.Timeout | null = null;
+      
+        if (!collisionDetected && meteors.length > 0) {
+          interval = setInterval(() => {
+            setSeconds(seconds => seconds + 1);
+          }, 1000);
+        } else if (collisionDetected && interval) {
+          clearInterval(interval);
+        }
+      
+        return () => {
+          if (interval) {
+            clearInterval(interval);
+          }
+        };
+      }, [collisionDetected, meteors]);   
 
-            setPosition(newPosition);
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            const interval = setInterval(() => {
+                const position = getRandomPosition();
+                const direction = getDirectionToCenter(position.x, position.y);
+                setMeteors(prevMeteors => [...prevMeteors, { id: Math.random(), ...position, ...direction }]);
+            }, 300);
 
-            // Check if the div is outside the viewport
-            if (newPosition.x < -100 || newPosition.x > window.innerWidth + 100 || newPosition.y < -100 || newPosition.y > window.innerHeight + 100) {
-                clearInterval(interval);
-                onRemove(id); // Remove the div
+            const timer = setInterval(() => {
+                setSeconds(seconds => seconds + 1);
+            }, 1000);
+
+            return () => clearInterval(interval);
+        }, 3000); // Delay of 3 seconds
+
+        return () => clearTimeout(timeout);
+    }, []);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const ctx = canvas.getContext('2d');
+            if (ctx) {
+                const img = new Image();
+                img.src = meteor.src;
+                const interval = setInterval(() => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    meteors.forEach((meteor) => {
+                        meteor.x += meteor.dx * (1 + Math.random() * 10);
+                        meteor.y += meteor.dy * (1 + Math.random() * 10);
+    
+                        // Check if the meteor is outside the viewport
+                        if (meteor.x < -100 || meteor.x > window.innerWidth + 100 || meteor.y < -100 || meteor.y > window.innerHeight + 100) {
+                            // Remove the meteor
+                            setMeteors(prevMeteors => prevMeteors.filter(m => m.id !== meteor.id));
+                        }
+    
+                        ctx.drawImage(img, meteor.x - imgSize, meteor.y - imgSize, imgSize, imgSize);
+    
+                        // Collision detection
+                        if (Math.hypot(meteor.x - mousePosition.current.x, meteor.y - mousePosition.current.y) < imgSize) {
+                            handleCollision();
+                            setSurvivalTime(seconds);
+                        }
+                    });
+                }); // Adjust this value to change the speed of the meteors
+    
+                return () => clearInterval(interval);
             }
-        }, 30);
-
-        return () => clearInterval(interval);
-    }, [dx, dy, id, onRemove, position]);
-
+        }
+    }, [meteors, setGameState, mousePosition, handleCollision, seconds]);
+    
     useEffect(() => {
-        const handleMouseMove = (event: MouseEvent) => {
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
-
-            // Check if the mouse position matches the div's position
-            if (Math.abs(mouseX - position.x) < 50 && Math.abs(mouseY - position.y) < 50) {
-                setGameState();
+        const handleResize = () => {
+            const canvas = canvasRef.current;
+            if (canvas) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             }
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
+    useEffect(() => {
+        const handleMouseMove = throttle((event: MouseEvent) => {
+            mousePosition.current = { x: event.clientX, y: event.clientY };
+        }, 200); // Throttle the function to only be called once every 200ms
+    
+        window.addEventListener('mousemove', handleMouseMove);
         return () => {
+            handleMouseMove.cancel(); // Cancel any trailing throttled calls
             window.removeEventListener('mousemove', handleMouseMove);
         };
-    }, [position, setGameState]);
+    }, []);
 
     return (
-        <div style={{ position: 'absolute', top: position.y, left: position.x, width: 50, height: 50, backgroundColor: 'rgb(60, 60, 60)' }} />
+        <>
+            { 
+                !collisionDetected ? 
+                <>
+                    <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0 }} />
+                    <MouseFollower/>
+                </>
+                :
+                <Dialog data={data} isOpen={dialog.isOpen} onClose={dialog.handleClose}/> 
+            }
+        </>
     );
 };
-
-type Div = {
-    id: number;
-    x: number;
-    y: number;
-    dx: number;
-    dy: number;
-  };
-
-export default function GetMeteors(): ReactElement {
-    const [divs, setDivs] = useState<Div[]>([]);
-    const [intervalTime, setIntervalTime] = useState(300); // Initialize interval time to 300
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const position = getRandomPosition();
-            const direction = getRandomDirection();
-            setDivs(prevDivs => [...prevDivs, { id: Math.random(), ...position, ...direction }]);
-
-            setIntervalTime(prevTime => Math.max(50, prevTime - 5));
-        }, intervalTime);
-
-        return () => clearInterval(interval);
-    }, [intervalTime]); // Add intervalTime as a dependency
-
-    const handleRemove = (id:number) => {
-        setDivs(prevDivs => prevDivs.filter(div => div.id !== id));
-    };
-
-    return (
-        <div>
-            {divs.map((props) => (
-                <MovingDiv key={props.id} {...props} onRemove={handleRemove} />
-            ))}
-            <MouseFollower divs={divs} />
-        </div>
-    );
-}

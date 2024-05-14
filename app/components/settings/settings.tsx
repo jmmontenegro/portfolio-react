@@ -1,10 +1,11 @@
 "use client";
 
-import { ReactElement, ReactNode, createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { GetDropDownMenu } from "../dropdown/dropdown";
 import styles from "./settings.module.css";
 import en from "../../resources/languages/en.json";
 import es from "../../resources/languages/es.json";
+import { UseDialog } from "../dialog/dialog";
 
 export const defaultSettings = {
   isEnabled: false,
@@ -17,7 +18,7 @@ export const defaultSettings = {
 
 export const SettingsContext = createContext(defaultSettings);
 
-export function SettingsProvider({ children }: { children: ReactNode }) {
+export function SettingsProvider({ children }: { children: React.ReactNode }): React.ReactElement {
   const [isEnabled, setIsEnabled] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [isRunningGame, runGame] = useState(false);
@@ -37,14 +38,15 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function GetSettings(): ReactElement {
+export function GetSettings({ dialog }: { dialog: ReturnType<typeof UseDialog> }): React.ReactElement {
 
   const data = GetLanguage();
   let title:string = "", 
   items:string[] = [],
   enable:string = "",
   disable:string = "",
-  background:string = "";
+  background:string = "",
+  playGame:string = "";
 
   data.map(json => {
     title = json.dialogs.settings.languageSelect;
@@ -52,6 +54,7 @@ export function GetSettings(): ReactElement {
     enable = json.dialogs.settings.enable;
     disable = json.dialogs.settings.disable;
     background = json.dialogs.settings.background;
+    playGame = json.dialogs.settings.playGame;
   });
 
   const { isEnabled, toggleDisplay, selectedOption, setSelectedOption, isRunningGame, setGameState} = useContext(SettingsContext);
@@ -59,13 +62,18 @@ export function GetSettings(): ReactElement {
   const handleDropdownChange = (selectedOption:string) => {
       setSelectedOption(selectedOption);
   };
+
+  const newSetGameState = () => {
+    dialog.handleClose();
+    setGameState();
+  };
   
   return (
-  <div className={styles.settings}>
-    <button className={styles.toggleButton} onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
-    <GetDropDownMenu onChange={handleDropdownChange} title={title} items={items}/>
-    {/* {IsBackgroundEnabled() && <button className={styles.toggleButton} onClick={setGameState}>Play Game</button>} */}
-  </div>
+    <div className={styles.settings}>
+      <button className={styles.toggleButton} onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
+      <GetDropDownMenu onChange={handleDropdownChange} title={title} items={items}/>
+      {IsBackgroundEnabled() && <button className={styles.toggleButton} onClick={newSetGameState}>{playGame}</button>}
+    </div>
   );
 }
 
