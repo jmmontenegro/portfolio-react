@@ -16,15 +16,20 @@ export default function StarBackground(): React.ReactElement {
     const workerRef = useRef<Worker | null>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-    const moveHandler = useCallback(throttle((e: MouseEvent | TouchEvent) => {
-        if ('touches' in e) {
+    const throttledHandler = throttle((e: MouseEvent | TouchEvent) => {
+        'touches' in e ?
             // This is a touch event
-            mousePositionRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        } else {
+            mousePositionRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+        :
             // This is a mouse event
             mousePositionRef.current = { x: e.clientX, y: e.clientY };
-        }
-    }, 50), []);
+        
+    }, 10);
+    
+    const moveHandler = useCallback((e:MouseEvent | TouchEvent) => {
+        throttledHandler(e);
+    }, [throttledHandler]); 
+
 
     useEffect(() => {
         window.addEventListener('mousemove', moveHandler);

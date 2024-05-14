@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState, useRef, useCallback } from "react";
 import { SettingsContext } from "../../settings/settings";
 import MouseFollower from "../mouse-follower/mouse-follower";
 import meteor from "../../../resources/meteor.png";
@@ -41,11 +41,11 @@ export default function GetMeteors(): React.ReactElement {
     data.title = "Collision"
     data.content = <div>You survived {survivalTime} seconds </div>
 
-    const handleCollision = () => {
+    const handleCollision = useCallback(() => {
         setCollisionDetected(true);
         dialog.handleOpen();
-    }
-
+      }, [setCollisionDetected, dialog]);
+      
     useEffect(() => {
         if (collisionDetected) {
             setSeconds(0);
@@ -83,7 +83,7 @@ export default function GetMeteors(): React.ReactElement {
             }, 1000);
 
             return () => clearInterval(interval);
-        }, 5000); // Delay of 5 seconds
+        }, 3000); // Delay of 3 seconds
 
         return () => clearTimeout(timeout);
     }, []);
@@ -122,7 +122,7 @@ export default function GetMeteors(): React.ReactElement {
                 return () => clearInterval(interval);
             }
         }
-    }, [meteors, setGameState]);
+    }, [meteors, setGameState, mousePosition, handleCollision, seconds]);
     
     useEffect(() => {
         const handleResize = () => {

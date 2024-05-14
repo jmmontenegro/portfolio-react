@@ -15,7 +15,7 @@ export default function MouseFollower(): React.ReactElement {
         return start * (1 - t) + end * t;
     };
 
-    const throttledHandler = useCallback(throttle((clientX: number, clientY: number) => {
+    const throttledFunction = throttle((clientX: number, clientY: number) => {
         const newPosition = { x: clientX, y: clientY };
         const dx = newPosition.x - position.x;
         const dy = newPosition.y - position.y;
@@ -27,7 +27,9 @@ export default function MouseFollower(): React.ReactElement {
     
         targetPosition.current = newPosition;
         targetRotation.current = newAngle;
-    }), [position, rotation]);
+    }, 100);
+    
+    const throttledHandler = useCallback(throttledFunction, [throttledFunction]);      
     
     const handleMouseMove = (event: React.MouseEvent) => {
         throttledHandler(event.clientX, event.clientY);

@@ -114,7 +114,3 @@ function GetSections(): React.ReactElement {
     </>
   );
 }
-
-function setGameState() {
-  throw new Error("Function not implemented.");
-}
