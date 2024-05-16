@@ -5,7 +5,7 @@ import Section from "./components/section/section";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faFileDownload }  from '@fortawesome/free-solid-svg-icons';
 import StarBackground from "./components/star-background/star-background";
-import { GetBorder, GetButtonColors, GetLanguage, GetSettings, GetSettingsContext, GetTheme, IsBackgroundEnabled } from "./components/settings/settings";
+import { GetBorder, GetButtonColors, GetLanguage, GetSettings, GetSettingsContext, GetTheme, IsBackgroundEnabled, SettingsContext } from "./components/settings/settings";
 import GetMeteors from "./components/game/meteor/meteor";
 import dialogData from "./components/dialog/dialog.data";
 import { getDefaultDialogData, GetDialog, UseDialog } from "./components/dialog/dialog";
@@ -41,7 +41,8 @@ function GetBackground(): React.ReactElement | boolean {
 
 function GetHeader(): React.ReactElement {
   const data = GetLanguage();
-  const style = GetSettingsContext().selectedTheme === "light" ? "rgb(230,230,230)" : "";
+  const selectedTheme = GetSettingsContext().selectedTheme;
+  const style = (selectedTheme === "Light" || selectedTheme === "Luz") ? "rgb(230,230,230)" : "";
   return (
     <div className={styles.headerContainer} style={{backgroundColor: style}}>
       {
