@@ -7,12 +7,18 @@
         "dialogs" : {
             "settings": {
                 "title":"Configuración",
-                "languageSelect" : "Por favor seleccione un idioma:",
+                "languageSelect" : "Seleccione un idioma:",
                 "languages" : ["Español", "Inglés"],
                 "enable" : "Habilitar",
                 "disable" : "Desactivar",
                 "background" : "el fondo",
-                "playGame" : "Iniciar el juego"
+                "playGame" : "Iniciar el juego",
+                "themeTitle" : "Seleccione una tema:",
+                "themes" : {
+                    "default": "Predeterminado",
+                    "light": "Luz", 
+                    "dark": "Oscuro"   
+                }
             },
             "game": {
                 "title" : "¡Fin!",

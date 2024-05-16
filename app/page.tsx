@@ -5,7 +5,7 @@ import Section from "./components/section/section";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faFileDownload }  from '@fortawesome/free-solid-svg-icons';
 import StarBackground from "./components/star-background/star-background";
-import { GetLanguage, GetSettings, GetSettingsContext, IsBackgroundEnabled } from "./components/settings/settings";
+import { GetBorder, GetButtonColors, GetLanguage, GetSettings, GetSettingsContext, GetTheme, IsBackgroundEnabled, SettingsContext } from "./components/settings/settings";
 import GetMeteors from "./components/game/meteor/meteor";
 import dialogData from "./components/dialog/dialog.data";
 import { getDefaultDialogData, GetDialog, UseDialog } from "./components/dialog/dialog";
@@ -20,10 +20,12 @@ export default function Home(): React.ReactElement {
      data.content = <GetSettings dialog={dialog}/>;
      data.buttonIcon = faCog;
      data.iconSize = "3x";
- });
+  });
 
+  const style = GetTheme();
+  style.backgroundColor = style.backgroundColor === 'var(--burgundy)' ? "" : style.backgroundColor;
   return (
-    <main className={styles.main}>
+    <main className={styles.main} style={style}>
       <GetBackground/>
       <GetHTMLOnCondition/>
       <div className={styles.settingsButton}>
@@ -39,9 +41,10 @@ function GetBackground(): React.ReactElement | boolean {
 
 function GetHeader(): React.ReactElement {
   const data = GetLanguage();
-
+  const selectedTheme = GetSettingsContext().selectedTheme;
+  const style = (selectedTheme === "Light" || selectedTheme === "Luz") ? "rgb(230,230,230)" : "";
   return (
-    <div className={styles.headerContainer}>
+    <div className={styles.headerContainer} style={{backgroundColor: style}}>
       {
         data.map((json, index) => (
           <div key={index} className={styles.header}>
@@ -56,8 +59,10 @@ function GetHeader(): React.ReactElement {
 }
 
 function GetLine(): React.ReactElement {
+  const style = {borderBottom: ""};
+  style.borderBottom = GetBorder();
   return (
-    <div className={styles.line}/>
+    <div className={styles.line} style={style}/>
   );
 }
 
@@ -91,7 +96,7 @@ function GetDownloadButton(): React.ReactElement {
     buttonText=json.downloadButton
   )
   return (
-    <a className={styles.downloadButton} href={"Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}>
+    <a className={styles.downloadButton} style={GetButtonColors()} href={"Jacob_Montenegro_Resume.pdf"} download={"Jacob_Montenegro_Resume.pdf"}>
       <FontAwesomeIcon icon={faFileDownload} size={"2x"} width={40} height={40}></FontAwesomeIcon>
         <p>{buttonText}</p>
     </a>
