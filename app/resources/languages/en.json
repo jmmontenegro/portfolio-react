@@ -7,12 +7,18 @@
         "dialogs" : {
             "settings": {
                 "title": "Settings",
-                "languageSelect" : "Please select a language:",
+                "languageSelect" : "Select a language:",
                 "languages" : ["English", "Spanish"],
                 "enable" : "Enable",
                 "disable" : "Disable",
                 "background" : "background",
-                "playGame" : "Play Game"
+                "playGame" : "Play Game",
+                "themeTitle" : "Select a theme",
+                "themes" : {
+                    "default": "Default",
+                    "light": "Light", 
+                    "dark": "Dark"   
+                }
             },
             "game": {
                 "title" : "Game Over!",

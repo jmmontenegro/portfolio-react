@@ -1,11 +1,15 @@
 import styles from "./bulletin.module.css";
 import { bulletPoints, bulletinProps } from "./bulletin.interface";
 import Image, { StaticImageData } from "next/image";
+import { GetBorder, GetTheme } from "../settings/settings";
 
 export default function Bulletin(data:bulletinProps): React.ReactElement {
-   return (
-    <div className={styles.container}>
-      <div className={styles.title}>
+  const style = GetTheme();
+  style.border = GetBorder();
+
+  return (
+    <div className={styles.container} style={style}>
+      <div className={styles.title} style={{borderBottom: style.border}}>
         {data.title}
         <p>{data.dates}</p>   
       </div>

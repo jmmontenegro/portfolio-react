@@ -1,18 +1,23 @@
 "use client";
 
-import { faClose, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import styles from "./dialog.module.css";
 import dialogData from "./dialog.data";
+import { GetButtonColors, GetSettingsContext } from "../settings/settings";
 
 export function Dialog({ data, isOpen, onClose } : { data:dialogData, isOpen:boolean, onClose: () => void }) {
+
+  const selectedTheme = GetSettingsContext().selectedTheme;
+  const dialogBoxColor = (selectedTheme === "Light" || selectedTheme === "Luz") ? "white" : "";
+  const border = (selectedTheme === "Light" || selectedTheme === "Luz") ? "1px solid black" : "";
   return (
     isOpen && (
       <div className={styles.dialogBoxShadow}>
-        <div className={styles.dialogBox}>
+        <div className={styles.dialogBox} style={{backgroundColor: dialogBoxColor}}>
           <div className={styles.dialogTitle}>{data.title}</div>
-          <div className={styles.dialogClose} onClick={onClose}>
+          <div className={styles.dialogClose} style={{border: border}} onClick={onClose}>
             <FontAwesomeIcon icon={faClose} />
           </div>
           <div className={styles.dialogContent}>{data.content}</div>
@@ -24,7 +29,7 @@ export function Dialog({ data, isOpen, onClose } : { data:dialogData, isOpen:boo
 
 export function DialogButton({ data, onOpen } : { data:dialogData, onOpen:() => void }) {
   return (
-    <a className={styles.dialogButton} onClick={onOpen}>
+    <a className={styles.dialogButton} style={GetButtonColors()} onClick={onOpen}>
       { data.buttonIcon && <FontAwesomeIcon className={styles.rotateIcon} icon={data.buttonIcon} size={data.iconSize}/> }
     </a>
   );
