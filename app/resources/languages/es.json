@@ -38,31 +38,14 @@
                 "bulletins": [
                     {
                         "title" : "Competencias laborales",
-                        "bullets": [
-                            {
-                                "main": "Competente en:",
-                                "keyPoints": [
-                                    "TypeScript","Java", "Spring Boot", "Angular (13-16)",
-                                    "Python",
-                                    "CI/CD",
-                                    "PostgreSQL",
-                                    "Desarrollo Fullstack",
-                                    "Desarrollo Front-end",
-                                    "Desarrollo Back-end",
-                                    "Desarrollo de API RESTful",
-                                    "Agile"
-                                ]
-                            },
-                            {
-                                "main": "Experiencia en:",
-                                "keyPoints": [
-                                    "C and C++.",
-                                    "Node.js",
-                                    "TFS",
-                                    "Linux (Ubuntu, Kali)",
-                                    "GitHub"
-                                ]
-                            }
+                        "description": [
+                            "Lenguajes de programación: Java, Python, TypeScript, JavaScript, C/C++", 
+                            "Desarrollo Web: React, Angular (13-16), Next.js, Node.js, HTML5, CSS, XML",
+                            "Desarrollo Backend: Spring Boot, APIs RESTful, Web Services, SQL, PostgreSQL, Microsoft SQL Server",
+                            "DevOps y Control de Versiones: Git, GitHub, CI/CD",
+                            "Sistemas operativos: Windows, Linux",
+                            "Metodologías: Agile, Scrum",
+                            "Otras habilidades: Desarrollo full-stack, diseño de interfaz de usuario (UI), accesibilidad web, depuración"
                         ]
                     }
                 ]
@@ -70,17 +53,27 @@
             "experience" : {
                 "sectionTitle" : "Experiencia",
                 "bulletins" : [
-                    { 
+                    {
                         "title" : "General Motors - Desarrollador de Software",
                         "description" : [
-                            "Llevé a cabo una investigación en profundidad y desarrolló soluciones para un equipo de generación de imágenes sintéticas.",
-                            "Produje datos realistas para mejorar los modelos de visión artificial de IA.",
-                            "Investigué, diseñé e implementé soluciones de diagnóstico para defectos de vehículos.",
-                            "Aproveché un backend de Spring Boot para crear API RESTful.",
-                            "Desarrollé un frontend dinámico de Angular (TypeScript) para la interacción del usuario.",
-                            "Utilicé bases de datos PostgreSQL para el almacenamiento y recuperación de datos."
+                            "Investigué, diseñé y desarrollé una aplicación web para entrenar e implementar modelos de Procesamiento de Lenguaje Natural (PLN) en el diagnóstico y reparación de defectos de vehículos, ayudando significativamente en la capacitación de nuevos técnicos.", 
+                            "Creé un backend robusto usando Java Spring Boot para extraer datos de fuentes en línea y almacenarlos en una base de datos PostgreSQL.", 
+                            "Colaboré estrechamente con ingenieros y técnicos en plantas de producción para comprender sus necesidades y mejorar su eficiencia a través de una interfaz de usuario completa y sencilla utilizando Angular.",
+                            "Realicé un extenso autoestudio en PNL y Machine Learning, aplicando con éxito este conocimiento para construir pipelines efectivos a pesar de no tener experiencia previa en estas áreas.",
+                            "La finalización exitosa de la aplicación web condujo a un mejor rendimiento en la producción, una disminución de los productos defectuosos y proporcionó una plataforma para la capacitación continua en nuevas tecnologías",
+                            "Llevé a cabo una investigación en profundidad y desarrollé soluciones para un equipo de generación de imágenes sintéticas, mejorando los modelos de visión artificial de IA"
                         ],
                         "dates" : "Julio 2021 – Febrero 2024"
+                    },
+                    {
+                        "title" : "The University of Texas at El Paso (UTEP) - ACES Coordinador/Tutor",
+                        "description" : [
+                            "Desarrollé una herramienta de seguimiento de tutoría basada en Java para agilizar los servicios de tutoría, mejorando la productividad y la asignación de recursos.",
+                            "Creé funciones para registrar y rastrear horas y clasificar tutores y estudiantes por especializaciones y cursos, mejorando la gestión del tiempo y la coincidencia estudiante-tutor",
+                            "Fui tutor de aproximadamente 35 estudiantes semanalmente en carreras como Ciencias de la Computación, Ingeniería Eléctrica, Negocios, etc., en materias como Ciencias de la Computación, Arquitectura de Computadores, Cálculo, Estadística y Física.",
+                            "Implementé estrategias de tutoría personalizadas que mejoraron significativamente los puntajes de los cursos de los estudiantes y fomentaron un entorno de aprendizaje de apoyo"
+                        ],
+                        "dates" : "Marzo 2019 – Mayo 2021"
                     }
                 ]
             },

@@ -38,31 +38,14 @@
                 "bulletins" : [
                     {
                         "title" : "Key Skills",
-                        "bullets": [
-                            {
-                                "main": "Proficiencies:",
-                                "keyPoints": [
-                                    "TypeScript","Java", "Spring Boot", "Angular (13-16)",
-                                    "Python.",
-                                    "CI/CD",
-                                    "PostgreSQL",
-                                    "Fullstack development",
-                                    "Front-end developement",
-                                    "Back-end development",
-                                    "Developing RESTful APIs",
-                                    "Agile"
-                                ]
-                            },
-                            {
-                                "main": "Experienced:",
-                                "keyPoints": [
-                                    "C and C++.",
-                                    "Node.js",
-                                    "TFS",
-                                    "Linux (Ubuntu, Kali)",
-                                    "GitHub"
-                                ]
-                            }
+                        "description": [
+                            "Programming Languages: Java, Python, TypeScript, JavaScript, C/C++",
+                            "Web Development: React, Angular (13-16), Next.js, Node.js, HTML5, CSS, XML",
+                            "Backend Development: Spring Boot, RESTful APIs, Web Services, SQL, PostgreSQL, Microsoft SQL Server",
+                            "DevOps and Version Control: Git, GitHub, CI/CD",
+                            "Operating Systems: Windows, Linux",
+                            "Methodologies: Agile, Scrum",
+                            "Other Skills: Full-stack development, User Interface (UI) design, Web accessibility, Debugging"
                         ]
                     }
                 ]
@@ -73,14 +56,24 @@
                     {
                         "title" : "General Motors - Software Developer",
                         "description" : [
-                            "Conducted in-depth research and developed solutions for a synthetic image generation team.",
-                            "Produced lifelike data to enhance AI computer vision models.",
-                            "Researched, designed, and implemented diagnostic solutions for vehicle defects.",
-                            "Leveraged a Spring Boot backend to create RESTful APIs.",
-                            "Developed a dynamic Angular (TypeScript) frontend for user interaction.",
-                            "Utilized PostgreSQL databases for data storage and retrieval."
+                            "Researched, designed, and developed a web application for training and deploying Natural Language Processing (NLP) models in vehicle defect diagnostics and repair, significantly aiding in the training of new technicians.",
+                            "Created a robust backend using Java Spring Boot to scrape data from online sources and store it in a PostgreSQL database.",
+                            "Collaborated closely with engineers and technicians in production plants to understand their needs and improve their efficiency through a comprehensive and straightforward UI using Angular.",
+                            "Conducted extensive self-study in NLP and Machine Learning, successfully applying this knowledge to build effective pipelines despite having no prior experience in these areas.",
+                            "The successful completion of the web application led to improved performance in production, a decrease in faulty products, and provided a platform for continuous training in new technologies.",
+                            "Conducted in-depth research and developed solutions for a synthetic image generation team, enhancing AI computer vision models."
                         ],
                         "dates" : "July 2021 – February 2024"
+                    },
+                    {
+                        "title" : "The University of Texas at El Paso (UTEP) - ACES Coordinator/Tutor",
+                        "description" : [
+                            "Developed a Java-based tutoring tracking tool to streamline tutoring services, improving productivity and resource allocation.",
+                            "Created features for logging and tracking hours and sorting tutors and students by majors and courses, enhancing time management and student-tutor matching.",
+                            "Tutored approximately 35 students weekly across majors like Computer Science, Electrical Engineering, Business, etc., in subjects like Computer Science, Computer Architecture, Calculus, Statistics, and Physics.",
+                            "Implemented personalized tutoring strategies that significantly improved students’ course scores and fostered a supportive learning environment."
+                        ],
+                        "dates" : "March 2019 – May 2021"
                     }
                 ]
             },
