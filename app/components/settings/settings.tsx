@@ -8,8 +8,10 @@ import es from "../../resources/languages/es.json";
 import { UseDialog } from "../dialog/dialog";
 
 export const defaultSettings = {
-  isEnabled: false,
-  toggleDisplay: () => {},
+  areStarsEnabled: false,
+  toggleStars: () => {},
+  isBallEnabled: false,
+  toggleBall: () => {},
   selectedOption: '',
   setSelectedOption: (value:string) => {},
   selectedTheme: '',
@@ -21,13 +23,18 @@ export const defaultSettings = {
 export const SettingsContext = createContext(defaultSettings);
 
 export function SettingsProvider({ children }: { children: React.ReactNode }): React.ReactElement {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [areStarsEnabled, setStars] = useState(false);
+  const [isBallEnabled, setBall] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedTheme, setSelectedTheme] = useState("");
   const [isRunningGame, runGame] = useState(false);
 
-  const toggleDisplay = () => {
-    setIsEnabled(prevState => !prevState);
+  const toggleStars = () => {
+    setStars(prevState => !prevState);
+  };
+
+  const toggleBall = () => {
+    setBall(prevState => !prevState);
   };
 
   const setGameState = () => {
@@ -35,7 +42,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }): R
   };
 
   return (
-    <SettingsContext.Provider value={{ isEnabled, toggleDisplay, selectedOption, setSelectedOption, selectedTheme, setSelectedTheme, isRunningGame, setGameState }}>
+    <SettingsContext.Provider value={{ areStarsEnabled, toggleStars, isBallEnabled, toggleBall, selectedOption, setSelectedOption, selectedTheme, setSelectedTheme, isRunningGame, setGameState }}>
       {children}
     </SettingsContext.Provider>
   );
@@ -60,7 +67,7 @@ export function GetSettings({ dialog }: { dialog: ReturnType<typeof UseDialog> }
     items = settings.languages;
     enable = settings.enable;
     disable = settings.disable;
-    background = settings.background;
+    background = settings.stars;
     playGame = settings.playGame;
     themes = [settings.themes.default, settings.themes.light, settings.themes.dark];
 
@@ -73,7 +80,7 @@ export function GetSettings({ dialog }: { dialog: ReturnType<typeof UseDialog> }
     themeTitle = settings.themeTitle;
   });
 
-  const { isEnabled, toggleDisplay, selectedOption, setSelectedOption, selectedTheme, setSelectedTheme, isRunningGame, setGameState} = useContext(SettingsContext);
+  const { areStarsEnabled, toggleStars, isBallEnabled, toggleBall, selectedOption, setSelectedOption, selectedTheme, setSelectedTheme, isRunningGame, setGameState} = useContext(SettingsContext);
 
   const handleLanguageDropdownChange = (selectedOption:string) => {
       setSelectedOption(selectedOption);
@@ -83,7 +90,6 @@ export function GetSettings({ dialog }: { dialog: ReturnType<typeof UseDialog> }
     setSelectedTheme(selectedTheme);
   };
 
-
   const newSetGameState = () => {
     dialog.handleClose();
     setGameState();
@@ -91,23 +97,25 @@ export function GetSettings({ dialog }: { dialog: ReturnType<typeof UseDialog> }
 
   return (
     <div className={styles.settings}>
-      <button className={styles.toggleButton} onClick={toggleDisplay}>{ isEnabled ? disable : enable } {background}</button>
+      <button className={styles.toggleButton} onClick={toggleBall}>{ isBallEnabled ? disable : enable } {background}</button>
+      <button className={styles.toggleButton} onClick={toggleStars}>{ areStarsEnabled ? disable : enable } {background}</button>
       <GetDropDownMenu onChange={handleThemeDropdownChange} title={themeTitle} items={themes}/>
       <GetDropDownMenu onChange={handleLanguageDropdownChange} title={title} items={items}/>
-      {IsBackgroundEnabled() && <button className={styles.toggleButton} onClick={newSetGameState}>{playGame}</button>}
+      {IsStarEnabled() && <button className={styles.toggleButton} onClick={newSetGameState}>{playGame}</button>}
     </div>
   );
 }
 
-export function IsBackgroundEnabled(): boolean {
-  const { isEnabled } = useContext(SettingsContext);
-  return isEnabled;
+export function IsStarEnabled(): boolean {
+  return GetSettingsContext().areStarsEnabled;
+}
+
+export function IsBallEnabled(): boolean {
+  return GetSettingsContext().isBallEnabled;
 }
 
 export function GetLanguage() {
-  const { selectedOption } = useContext(SettingsContext);
-
-  switch(selectedOption) {
+  switch(GetSettingsContext().selectedOption) {
     case 'Spanish' || 'Español':
       return es;
 
@@ -127,7 +135,7 @@ export interface stylesData {
   border?: string; 
 }
 
-export function GetTheme() {
+export function GetTheme(): stylesData {
   let style:stylesData = {} as stylesData;
 
   switch(GetSettingsContext().selectedTheme) {

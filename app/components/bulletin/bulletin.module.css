@@ -5,7 +5,7 @@
     border-radius: 8px;
     min-width: 500px;
     width: 90vw;
-    z-index: 1;
+    backface-visibility: hidden;
 }
 
 .title {
@@ -79,3 +79,70 @@
         flex-direction: column;
     }
 }
+
+
+
+
+/**
+* Important properties to make this animation work:
+
+* backface-visibility: hidden;
+  * Hide the back of the card until it should be visible
+  * https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility
+
+* transform-style: preserve-3d;
+  * Makes children elements positioned in 3D space. Default is flat.
+  * https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style
+
+* transform: translateZ(100px);
+  * Moves elements closer to or further away from the the viewer
+  * https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateZ
+
+* perspective: 1200px;
+  * Setting the distance between the element and the user
+    to determine perspective of 3D elements
+  * Lowering this value will make the animation more "in your face"
+  * https://developer.mozilla.org/en-US/docs/Web/CSS/perspective
+
+*/
+  .cardContainer {
+    /* perspective: 5000px; */
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    z-index: 1;
+
+    margin: 0 auto;
+    max-width: 80%;
+    position: relative;
+    transition: all 1s ease;
+    transform-style: preserve-3d;
+  }
+  
+  .rotated {
+    transform: rotateY(-180deg);
+  }
+  .cardContents {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transform-style: preserve-3d; 
+    backface-visibility: hidden;
+  }
+  .cardDepth {
+     transform: scale(0.98);
+     perspective: inherit;  
+  }
+  .cardFront {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+  .cardBack {
+    margin-right: -30px;
+    transform: rotateY(-180deg) translateY(-230px);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    margin-bottom: -230px;
+  }

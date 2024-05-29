@@ -4,11 +4,12 @@ import styles from "./page.module.css";
 import Section from "./components/section/section";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faFileDownload }  from '@fortawesome/free-solid-svg-icons';
-import StarBackground from "./components/star-background/star-background";
-import { GetBorder, GetButtonColors, GetLanguage, GetSettings, GetSettingsContext, GetTheme, IsBackgroundEnabled, SettingsContext } from "./components/settings/settings";
+import StarBackground from "./components/backgrounds/star-background/star-background";
+import { GetBorder, GetButtonColors, GetLanguage, GetSettings, GetSettingsContext, GetTheme, IsBallEnabled, IsStarEnabled as IsStarsEnabled, SettingsContext } from "./components/settings/settings";
 import GetMeteors from "./components/game/meteor/meteor";
 import dialogData from "./components/dialog/dialog.data";
 import { getDefaultDialogData, GetDialog, UseDialog } from "./components/dialog/dialog";
+import { BallBackground } from "./components/backgrounds/ball/ball";
 
 export default function Home(): React.ReactElement {
 
@@ -36,13 +37,14 @@ export default function Home(): React.ReactElement {
 }
 
 function GetBackground(): React.ReactElement | boolean {
-  return IsBackgroundEnabled() && <StarBackground/>;
+  return IsStarsEnabled() && <StarBackground/> || IsBallEnabled() && <BallBackground/>;
 }
 
 function GetHeader(): React.ReactElement {
   const data = GetLanguage();
-  const selectedTheme = GetSettingsContext().selectedTheme;
-  const style = (selectedTheme === "Light" || selectedTheme === "Luz") ? "rgb(230,230,230)" : "";
+  const selectedTheme: string = GetSettingsContext().selectedTheme;
+  const style: string = (selectedTheme === "Light" || selectedTheme === "Luz") ? "rgb(230,230,230)" : "";
+  const email: string = "jacob.m.montenegro@gmail.com";
   return (
     <div className={styles.headerContainer} style={{backgroundColor: style}}>
       {
@@ -50,7 +52,7 @@ function GetHeader(): React.ReactElement {
           <div key={index} className={styles.header}>
             <h1 className={styles.title}>Jacob Montenegro</h1>
             <h2>{json.mainHeader.softwareDev}</h2>
-            <a href="mailto:jacob.m.montenegro@gmail.com" className={styles.email}>jacob.m.montenegro@gmail.com</a>
+            <a href={`mailto:${email}`} className={styles.email}>{email}</a>
           </div>
         ))
       }

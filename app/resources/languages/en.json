@@ -11,7 +11,7 @@
                 "languages" : ["English", "Spanish"],
                 "enable" : "Enable",
                 "disable" : "Disable",
-                "background" : "background",
+                "stars" : "stars",
                 "playGame" : "Play Game",
                 "themeTitle" : "Select a theme",
                 "themes" : {

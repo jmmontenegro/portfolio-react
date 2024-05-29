@@ -11,7 +11,7 @@
                 "languages" : ["Español", "Inglés"],
                 "enable" : "Habilitar",
                 "disable" : "Desactivar",
-                "background" : "el fondo",
+                "stars" : "estrallas",
                 "playGame" : "Iniciar el juego",
                 "themeTitle" : "Seleccione una tema:",
                 "themes" : {
