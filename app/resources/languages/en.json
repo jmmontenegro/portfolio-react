@@ -54,7 +54,7 @@
                 "sectionTitle" : "Experience",
                 "bulletins" : [
                     {
-                        "title" : "General Motors - Diagnostic Steps, Full-Stack Software Developer",
+                        "title" : "General Motors - Lead Full-Stack Software Developer",
                         "description" : [
                             "Led the design and implementation of a vehicle diagnostic web application that would feed data into the main eDiagnostics web application, which serves as a dynamic tool for technicians to manage diagnostic and repair steps, enhancing workflow efficiency.",
                             "Engineered a robust backend with Java Spring Boot and designed a user-friendly UI with Angular, informed by insights from collaborating with production-line engineers and technicians.",
