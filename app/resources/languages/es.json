@@ -30,7 +30,7 @@
                 "bulletins" : [
                     {
                         "title": "Declaración Personal" ,
-                        "description" : "Desarrollador de software experimentado, hábil en el diseño e implementación de soluciones de software robustas. Competente en varios lenguajes de programación y marcos de trabajo, con un enfoque en la creación de aplicaciones eficientes y escalables. Conocido por entregar código de alta calidad y soluciones innovadoras que cumplen con los requisitos del proyecto y superan las expectativas del cliente."
+                        "description" : "Desarrollador de software full-stack experimentado, hábil en el diseño e implementación de soluciones de software robustas. Competente en varios lenguajes de programación y marcos de trabajo, con un enfoque en la creación de aplicaciones eficientes y escalables. Conocido por entregar código de alta calidad y soluciones innovadoras que cumplen con los requisitos del proyecto y superan las expectativas del cliente."
                     }
                 ]
             },
@@ -54,16 +54,32 @@
                 "sectionTitle" : "Experiencia",
                 "bulletins" : [
                     {
+                        "title" : "General Motors - Desarrollador Líder de Software Full-Stack",
+                        "description" : [
+                            "Lideré el diseño y la implementación de una aplicación web de diagnóstico de vehículos que alimentaría datos en la aplicación web principal de eDiagnostics, que sirve como una herramienta dinámica para que los técnicos administren los pasos de diagnóstico y reparación, mejorando la eficiencia del flujo de trabajo",
+                            "Diseñé un backend robusto con Java Spring Boot y diseñé una interfaz de usuario fácil de usar con Angular, informada por los conocimientos de la colaboración con ingenieros y técnicos de la línea de producción",
+                            "El lanzamiento exitoso de esta aplicación mejoró el rendimiento de la producción, redujo los vehículos defectuosos y proporcionó una plataforma para la capacitación continua",
+                            "La aplicación también cuenta con una capacidad única para resolver defectos. Inicialmente, resolvió alrededor de 2.000 defectos únicos de una lista cada vez mayor, en colaboración con un equipo de expertos. Diseñado para ser utilizado por otras personas calificadas, continúa mejorando la eficiencia del proceso de gestión de defectos"
+                        ],
+                        "dates" : "Junio 2022 – Febrero 2024"
+                    },
+                    {
+                        "title" : "General Motors - Desarrollador de Software Full-Stack",
+                        "description" : [
+                            "Colaboré diariamente con ingenieros, diagnosticadores y líderes empresariales para desarrollar una aplicación web que capacita a los técnicos para resolver códigos de error durante el ensamblaje del vehículo",
+                            "Diseñé soluciones frontend para trabajar en dispositivos móviles y de escritorio que mostraban la información de diagnóstico del vehículo de manera cohesiva", 
+                            "Diseñé y desarrollé puntos finales de la API Restful para recopilar datos de defectos de vehículos"
+                        ],
+                        "dates" : "Noviembre 2021 – Junio 2022"
+                    },
+                    {
                         "title" : "General Motors - Desarrollador de Software",
                         "description" : [
-                            "Investigué, diseñé y desarrollé una aplicación web para entrenar e implementar modelos de Procesamiento de Lenguaje Natural (PLN) en el diagnóstico y reparación de defectos de vehículos, ayudando significativamente en la capacitación de nuevos técnicos.", 
-                            "Creé un backend robusto usando Java Spring Boot para extraer datos de fuentes en línea y almacenarlos en una base de datos PostgreSQL.", 
-                            "Colaboré estrechamente con ingenieros y técnicos en plantas de producción para comprender sus necesidades y mejorar su eficiencia a través de una interfaz de usuario completa y sencilla utilizando Angular.",
-                            "Realicé un extenso autoestudio en PNL y Machine Learning, aplicando con éxito este conocimiento para construir pipelines efectivos a pesar de no tener experiencia previa en estas áreas.",
-                            "La finalización exitosa de la aplicación web condujo a un mejor rendimiento en la producción, una disminución de los productos defectuosos y proporcionó una plataforma para la capacitación continua en nuevas tecnologías",
-                            "Llevé a cabo una investigación en profundidad y desarrollé soluciones para un equipo de generación de imágenes sintéticas, mejorando los modelos de visión artificial de IA"
+                            "Colaboré con un equipo multifuncional para desarrollar un proceso simplificado para la creación y recopilación de miles de imágenes de datos sintéticos, mejorando la eficiencia de la recopilación de datos",
+                            "Utilicé los datos sintéticos recopilados para mejorar el rendimiento de los sistemas de visión artificial, lo que condujo a resultados más precisos y confiables en aplicaciones del mundo real",
+                            "Contribuí a la rigurosa capacitación y prueba de los sistemas de visión por computadora utilizando datos de imágenes sintéticas, asegurando la robustez y adaptabilidad de los sistemas a diversos defectos del vehículo"
                         ],
-                        "dates" : "Julio 2021 – Febrero 2024"
+                        "dates" : "Julio 2021 – Noviembre 2021"
                     },
                     {
                         "title" : "The University of Texas at El Paso (UTEP) - ACES Coordinador/Tutor",

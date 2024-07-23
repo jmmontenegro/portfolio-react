@@ -30,7 +30,7 @@
                 "bulletins" : [
                     {
                         "title": "Personal Statement",
-                        "description" : "Experienced software developer skilled in designing and implementing robust software solutions. Proficient in various programming languages and frameworks, with a focus on creating efficient and scalable applications. Known for delivering high-quality code and innovative solutions that meet project requirements and exceed client expectations."
+                        "description" : "Experienced full-stack software developer skilled in designing and implementing robust software solutions. Proficient in various programming languages and frameworks, with a focus on creating efficient and scalable applications. Known for delivering high-quality code and innovative solutions that meet project requirements and exceed client expectations."
                     }
                 ]
             },
@@ -54,16 +54,32 @@
                 "sectionTitle" : "Experience",
                 "bulletins" : [
                     {
-                        "title" : "General Motors - Software Developer",
+                        "title" : "General Motors - eDiagnostics - Diagnostic Steps, Full-Stack Software Developer",
                         "description" : [
-                            "Researched, designed, and developed a web application for training and deploying Natural Language Processing (NLP) models in vehicle defect diagnostics and repair, significantly aiding in the training of new technicians.",
-                            "Created a robust backend using Java Spring Boot to scrape data from online sources and store it in a PostgreSQL database.",
-                            "Collaborated closely with engineers and technicians in production plants to understand their needs and improve their efficiency through a comprehensive and straightforward UI using Angular.",
-                            "Conducted extensive self-study in NLP and Machine Learning, successfully applying this knowledge to build effective pipelines despite having no prior experience in these areas.",
-                            "The successful completion of the web application led to improved performance in production, a decrease in faulty products, and provided a platform for continuous training in new technologies.",
-                            "Conducted in-depth research and developed solutions for a synthetic image generation team, enhancing AI computer vision models."
+                            "Led the design and implementation of a vehicle diagnostic web application that would feed data into the main eDiagnostics web application, which serves as a dynamic tool for technicians to manage diagnostic and repair steps, enhancing workflow efficiency.",
+                            "Engineered a robust backend with Java Spring Boot and designed a user-friendly UI with Angular, informed by insights from collaborating with production-line engineers and technicians.",
+                            "The successful launch of this application improved production performance, reduced faulty vehicles, and provided a platform for continuous training.",
+                            "The application also features a unique capability to resolve defects. Initially, it resolved around 2,000 unique defects from a growing list, in collaboration with a team of experts. Designed for use by other qualified individuals, it continues to improve the efficiency of the defect management process."
                         ],
-                        "dates" : "July 2021 – February 2024"
+                        "dates" : "June 2022 – February 2024"
+                    },
+                    {
+                        "title" : "General Motors - eDiagnostics, Full-Stack Software Developer",
+                        "description" : [
+                            "Collaborated with engineers, diagnosticians, and business leaders daily to develop a web application that trains technicians to resolve error codes during vehicle assembly.",
+                            "Designed frontend solutions to work across desktop and mobile devices that displayed vehicle diagnostic information in a cohesive manner.",
+                            "Designed and developed Restful API endpoints for collecting vehicle defect data."
+                        ],
+                        "dates" : "November 2021 – June 2022"
+                    },
+                    {
+                        "title" : "General Motors - Vehicle Synthetic Image Data, Software Developer",
+                        "description" : [
+                            "Collaborated with a cross-functional team to develop a streamlined process for the creation and collection of thousands of synthetic data images, enhancing the efficiency of data gathering.",
+                            "Utilized the collected synthetic data to improve the performance of computer vision systems, leading to more accurate and reliable results in real-world applications.",
+                            "Contributed to the rigorous training and testing of the computer vision systems using the synthetic image data, ensuring the systems’ robustness and adaptability to various vehicle defects."
+                        ],
+                        "dates" : "July 2021 – November 2021"
                     },
                     {
                         "title" : "The University of Texas at El Paso (UTEP) - ACES Coordinator/Tutor",
