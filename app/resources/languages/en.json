@@ -54,7 +54,7 @@
                 "sectionTitle" : "Experience",
                 "bulletins" : [
                     {
-                        "title" : "General Motors - eDiagnostics - Diagnostic Steps, Full-Stack Software Developer",
+                        "title" : "General Motors - Diagnostic Steps, Full-Stack Software Developer",
                         "description" : [
                             "Led the design and implementation of a vehicle diagnostic web application that would feed data into the main eDiagnostics web application, which serves as a dynamic tool for technicians to manage diagnostic and repair steps, enhancing workflow efficiency.",
                             "Engineered a robust backend with Java Spring Boot and designed a user-friendly UI with Angular, informed by insights from collaborating with production-line engineers and technicians.",
@@ -64,7 +64,7 @@
                         "dates" : "June 2022 – February 2024"
                     },
                     {
-                        "title" : "General Motors - eDiagnostics, Full-Stack Software Developer",
+                        "title" : "General Motors - Full-Stack Software Developer",
                         "description" : [
                             "Collaborated with engineers, diagnosticians, and business leaders daily to develop a web application that trains technicians to resolve error codes during vehicle assembly.",
                             "Designed frontend solutions to work across desktop and mobile devices that displayed vehicle diagnostic information in a cohesive manner.",
@@ -73,7 +73,7 @@
                         "dates" : "November 2021 – June 2022"
                     },
                     {
-                        "title" : "General Motors - Vehicle Synthetic Image Data, Software Developer",
+                        "title" : "General Motors - Software Developer",
                         "description" : [
                             "Collaborated with a cross-functional team to develop a streamlined process for the creation and collection of thousands of synthetic data images, enhancing the efficiency of data gathering.",
                             "Utilized the collected synthetic data to improve the performance of computer vision systems, leading to more accurate and reliable results in real-world applications.",
