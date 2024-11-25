@@ -39,7 +39,7 @@
                     {
                         "title" : "Competencias laborales",
                         "description": [
-                            "Lenguajes de programación: Java, Python, TypeScript, JavaScript, C/C++", 
+                            "Lenguajes de programación: Java, Python, Go, Ruby, TypeScript, JavaScript, C/C++", 
                             "Desarrollo Web: React, Angular (13-16), Next.js, Node.js, HTML5, CSS, XML",
                             "Desarrollo Backend: Spring Boot, APIs RESTful, Web Services, SQL, PostgreSQL, Microsoft SQL Server",
                             "DevOps y Control de Versiones: Git, GitHub, CI/CD",
@@ -53,6 +53,16 @@
             "experience" : {
                 "sectionTitle" : "Experiencia",
                 "bulletins" : [
+                    {
+                        "title" : "Bay Bridge Administrators - EDI Programador/Analista",
+                        "description" : [
+                            "Desarrollé un conjunto de herramientas para desencriptar, leer y convertir archivos de tipo CSV/XML/834 a un formato de archivo propietario.",
+                            "Creé un proceso para la inscripción única de datos de suscriptores de seguros, utilizando métodos estadísticos para mapear los datos de los suscriptores a la base de datos.",
+                            "Desarrollé un backend en Go usando Fiber, para acceder a los datos y utilizar las herramientas dentro del frontend.",
+                            "Creé una prueba de concepto para el frontend en Python usando Tkinter; actualmente evaluando la migración a Angular, TypeScript o Windows Presentation Foundation."
+                        ],
+                        "dates" : "Current"
+                    },
                     {
                         "title" : "General Motors - Desarrollador Líder de Software Full-Stack",
                         "description" : [
