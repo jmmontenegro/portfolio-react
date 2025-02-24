@@ -39,9 +39,9 @@
                     {
                         "title" : "Key Skills",
                         "description": [
-                            "Programming Languages: Java, Python, Go, Ruby, TypeScript, JavaScript, C/C++",
-                            "Web Development: React, Angular (13-16), Next.js, Node.js, HTML5, CSS, XML",
-                            "Backend Development: Spring Boot, RESTful APIs, Web Services, SQL, PostgreSQL, Microsoft SQL Server",
+                            "Programming Languages: Java, C#, Python, Go, Ruby, TypeScript, JavaScript, C/C++",
+                            "Frontend Development: React, Angular (13-16), Windows Presentation Foundation, Next.js, Node.js, HTML5, CSS, XML",
+                            "Backend Development: Spring Boot, RESTful APIs, Go/Fiber, Web Services, SQL, PostgreSQL, Microsoft SQL Server",
                             "DevOps and Version Control: Git, GitHub, CI/CD",
                             "Operating Systems: Windows, Linux",
                             "Methodologies: Agile, Scrum",
@@ -57,9 +57,9 @@
                         "title" : "Bay Bridge Administrators - EDI Programmer/Analyst",
                         "description" : [
                             "Developed a toolset for decrypting, reading, and converting from CSV/XML/834 file types into a proprietary file format.",
-                            "Created a process for one-time enrollment of insurance subscriber data, using statistical methods to map subscriber data to the database.",
-                            "Developed a backend in Go using Fiber, to access data and utilize the tools within the frontend.",
-                            "Created a Proof of Concept for the frontend in Python using Tkinter; currently evaluating migration to Angular, TypeScript, or Windows Presentation Foundation."
+                            "Created a process for one-time enrollment of insurance subscriber data, which used to take upwards of 5 days to complete but now takes only 5 minutes, using statistical methods to map subscriber data to the database.",
+                            "Developed a backend in Go using Fiber to access data and utilize the tools within the frontend.",
+                            "Designed and implemented the frontend in C# Windows Presentation Foundation, which standardizes how the EDI team reports errors in files by organizing the errors in a meaningful way for coordinators to use when they reach out to brokers for verification/correction. This frontend also streamlines the one-time enrollment process, follows strict guidelines in protecting sensitive information as required by law, provides a realtime visualization of the data with helpful tooltips, color codes for quick error detection, line number highlighting for lines of data with errors, and includes file data diagnostics and resolutions to aid in standardizing and streamlining the EDI team reports for errors."
                         ],
                         "dates" : "August 2024 – Current"
                     },
