@@ -39,9 +39,9 @@
                     {
                         "title" : "Competencias laborales",
                         "description": [
-                            "Lenguajes de programación: Java, Python, Go, Ruby, TypeScript, JavaScript, C/C++", 
-                            "Desarrollo Web: React, Angular (13-16), Next.js, Node.js, HTML5, CSS, XML",
-                            "Desarrollo Backend: Spring Boot, APIs RESTful, Web Services, SQL, PostgreSQL, Microsoft SQL Server",
+                            "Lenguajes de programación: Java, C#, Python, Go, Ruby, TypeScript, JavaScript, C/C++", 
+                            "Desarrollo Frontend: React, Angular (13-16), Windows Presentation Foundation, Next.js, Node.js, HTML5, CSS, XML",
+                            "Desarrollo Backend: Spring Boot, APIs RESTful, Go/Fiber, Web Services, SQL, PostgreSQL, Microsoft SQL Server",
                             "DevOps y Control de Versiones: Git, GitHub, CI/CD",
                             "Sistemas operativos: Windows, Linux",
                             "Metodologías: Agile, Scrum",
@@ -56,10 +56,10 @@
                     {
                         "title" : "Bay Bridge Administrators - EDI Programador/Analista",
                         "description" : [
-                            "Desarrollé un conjunto de herramientas para desencriptar, leer y convertir archivos de tipo CSV/XML/834 a un formato de archivo propietario.",
-                            "Creé un proceso para la inscripción única de datos de suscriptores de seguros, utilizando métodos estadísticos para mapear los datos de los suscriptores a la base de datos.",
-                            "Desarrollé un backend en Go usando Fiber, para acceder a los datos y utilizar las herramientas dentro del frontend.",
-                            "Creé una prueba de concepto para el frontend en Python usando Tkinter; actualmente evaluando la migración a Angular, TypeScript o Windows Presentation Foundation."
+                            "Desarrollé un conjunto de herramientas para desencriptar, leer y convertir archivos de tipos CSV/XML/834 a un formato de archivo propietario.",
+                            "Creé un proceso para la inscripción única de datos de suscriptores de seguros, que solía llevar más de 5 días y ahora solo toma 5 minutos, utilizando métodos estadísticos para mapear los datos de los suscriptores a la base de datos.",
+                            "Desarrollé un backend en Go utilizando Fiber para acceder a los datos y utilizar las herramientas en el frontend.",
+                            "Diseñé e implementé el frontend en C# Windows Presentation Foundation, que estandariza cómo el equipo de EDI informa errores en los archivos, organizando los errores de una manera significativa para que los coordinadores los utilicen cuando se comunican con los corredores para la verificación/corrección. Este frontend también agiliza el proceso de inscripción única, sigue pautas estrictas para proteger la información sensible según lo requiere la ley, proporciona una visualización en tiempo real de los datos con herramientas útiles, códigos de color para la detección rápida de errores, resalta números de línea para líneas de datos con errores e incluye diagnósticos de datos de archivos y resoluciones para ayudar a estandarizar y agilizar los informes de errores del equipo de EDI."    
                         ],
                         "dates" : "Current"
                     },
